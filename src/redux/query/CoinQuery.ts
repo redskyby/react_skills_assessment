@@ -24,8 +24,11 @@ export const coinQueryApi = createApi({
     endpoints: (build) => ({
         getAllCoins: build.query<CoinDataResponse, void>({
             query: () => '/assets/?limit=10'
+        }),
+        getOneCoin : build.query<CoinData, void>({
+            query: (name) => '/assets/${name}'
         })
     })
 });
 
-export const {useGetAllCoinsQuery} = coinQueryApi;
+export const {useGetAllCoinsQuery, useGetOneCoinQuery} = coinQueryApi;
