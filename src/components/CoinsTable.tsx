@@ -7,7 +7,7 @@ const CoinsTable = () => {
 
     const { data, isLoading, error } = useGetAllCoinsQuery('');
 
-    console.log(data?.data[0].symbol);
+    console.log(data.data);
     return (
         <div>
             

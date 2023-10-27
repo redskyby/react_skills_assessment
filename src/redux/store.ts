@@ -1,18 +1,17 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit'
+import { configureStore} from '@reduxjs/toolkit'
 import {coinQueryApi} from './query/CoinQuery';
+import {setupListeners} from "@reduxjs/toolkit/query";
 
 
-const rootReducer = combineReducers({
-    [coinQueryApi.reducerPath]: coinQueryApi.reducer
-})
-export const setupStore = () => {
 
-    return configureStore({
-        reducer: rootReducer,
+export const store = configureStore({
+        reducer: {
+            [coinQueryApi.reducerPath]: coinQueryApi.reducer
+        },
 
-        middleware: (getDefaultMiddleware) => {
-            return getDefaultMiddleware().concat(coinQueryApi.middleware)
-        }
+        middleware: (getDefaultMiddleware) =>
+             getDefaultMiddleware().concat(coinQueryApi.middleware)
     })
-}
+
+setupListeners(store.dispatch)
 
