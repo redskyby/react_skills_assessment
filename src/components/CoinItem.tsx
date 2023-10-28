@@ -1,6 +1,7 @@
 import React from 'react';
 import {Col, Container, Image, Row , Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import {COIN_ROUTE} from "../utils/route_path";
 
 interface CoinData {
     id: string;
@@ -18,14 +19,23 @@ interface CoinData {
 
 
 const CoinItem = ({data}: { data: CoinData }) => {
-    //
-    // const history = useNavigate();
+
+     const history = useNavigate();
+
+    function showPageOfCoin(e : any , id : string): void {
+        e.preventDefault();
+        history(COIN_ROUTE + '/' + id);
+
+    }
 
     return (
-        <Container>
-            <Row>
+        <Container >
+            <Row onClick={ e => showPageOfCoin(e , data.id)}>
                 <Col>
                     <Image src={data.symbol} />
+                </Col>
+                <Col>
+                   <p>{data.symbol}</p>
                 </Col>
                 <Col>
                     <p>Цена в USD: {data.priceUsd}</p>

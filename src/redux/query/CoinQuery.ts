@@ -1,21 +1,25 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
-interface CoinData {
-    id: string;
-    rank: string;
-    symbol: string;
-    name: string;
-    supply: string;
-    maxSupply: string;
-    marketCapUsd: string;
-    volumeUsd24Hr: string;
-    priceUsd: string;
-    changePercent24Hr: string;
-    vwap24Hr: string;
+export interface CoinData {
+        id: string;
+        rank: string;
+        symbol: string;
+        name: string;
+        supply: string;
+        maxSupply: string;
+        marketCapUsd: string;
+        volumeUsd24Hr: string;
+        priceUsd: string;
+        changePercent24Hr: string;
+        vwap24Hr: string;
 }
 
 interface CoinDataResponse {
     data: CoinData[];
+}
+
+interface  CoinOne{
+    data : CoinData;
 }
 
 export const coinQueryApi = createApi({
@@ -25,8 +29,8 @@ export const coinQueryApi = createApi({
         getAllCoins: build.query<CoinDataResponse, void>({
             query: () => '/assets/?limit=10'
         }),
-        getOneCoin : build.query<CoinData, void>({
-            query: (name) => '/assets/${name}'
+        getOneCoin: build.query<CoinOne, string>({
+            query: (name) => `/assets/${name}`
         })
     })
 });

@@ -8,7 +8,7 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path={SHOP_ROUTE} element={<CoinsTable/>}/>
-            <Route path={COIN_ROUTE} element={<CoinPage/>}/>
+            <Route path={COIN_ROUTE + '/:id'} element={<CoinPage/>}/>
 
             <Route path='*' element={<CoinsTable/>}/>
         </Routes>
