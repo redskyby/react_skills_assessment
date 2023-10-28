@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Container, Image, Row , Button} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
 interface CoinData {
     id: string;
@@ -17,6 +18,8 @@ interface CoinData {
 
 
 const CoinItem = ({data}: { data: CoinData }) => {
+
+    const historu = useNavigate();
 
     return (
         <Container>
