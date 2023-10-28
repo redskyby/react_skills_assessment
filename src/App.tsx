@@ -1,9 +1,13 @@
 import React from 'react';
-import CoinsTable from "./components/CoinsTable";
+import {BrowserRouter} from "react-router-dom";
+import NavBar from "./components/NavBar";
+
 
 function App() {
     return (
-        <CoinsTable/>
+        <BrowserRouter>
+            <NavBar/>
+        </BrowserRouter>
     );
 }
 

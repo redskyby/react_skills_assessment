@@ -18,8 +18,8 @@ interface CoinData {
 
 
 const CoinItem = ({data}: { data: CoinData }) => {
-
-    const historu = useNavigate();
+    //
+    // const history = useNavigate();
 
     return (
         <Container>
