@@ -1,12 +1,27 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useGetAllCoinsQuery} from "../redux/query/CoinQuery";
 import {Container, Row} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 
 const CoinsTable = () => {
+    const [items, setItems] = useState(10);
 
-    const {data, isLoading, error} = useGetAllCoinsQuery();
+    const {data, isLoading, error} = useGetAllCoinsQuery(items);
+
+    useEffect(() => {
+
+        document.addEventListener('scroll', scrollHandler)
+        return function () {
+            document.removeEventListener('scroll', scrollHandler)
+        }
+    }, [data])
+
+    const scrollHandler = (e: any) => {
+            if(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100){
+                setItems(items + 1);
+            }
+    }
 
     return (
         <Container>

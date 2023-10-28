@@ -26,8 +26,8 @@ export const coinQueryApi = createApi({
     reducerPath: 'coinQueryApi',
     baseQuery: fetchBaseQuery({baseUrl: "https://api.coincap.io/v2"}),
     endpoints: (build) => ({
-        getAllCoins: build.query<CoinDataResponse, void>({
-            query: () => '/assets/?limit=10'
+        getAllCoins: build.query<CoinDataResponse, number>({
+            query: (items) => `/assets/?limit=${items}`
         }),
         getOneCoin: build.query<CoinOne, string>({
             query: (name) => `/assets/${name}`
