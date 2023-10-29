@@ -38,16 +38,18 @@ const CoinItem = ({data}: { data: CoinData }) => {
                    <p>{data.symbol}</p>
                 </Col>
                 <Col>
-                    <p>Цена в USD: {data.priceUsd}</p>
+                    <p>{data.priceUsd} </p>
                 </Col>
                 <Col>
-                    <p>Рыночная капитализация в USD : {data.marketCapUsd}</p>
+                    <p>{data.marketCapUsd}</p>
                 </Col>
                 <Col>
-                    <p>Изменение цены за 24 часа в процентах : {data.changePercent24Hr}</p>
+                    <p>{data.changePercent24Hr}</p>
                 </Col>
                 <Col>
-                    <Button type={'button'}>Добавить в портфель</Button>
+                    <Button
+                        type={'button'}
+                    >Добавить в портфель</Button>
                 </Col>
             </Row>
         </Container>

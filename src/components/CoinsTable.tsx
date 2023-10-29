@@ -1,26 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {useGetAllCoinsQuery} from "../redux/query/CoinQuery";
-import {Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 
 const CoinsTable = () => {
-    const [items, setItems] = useState(10);
+    const [items, setItems] = useState(14);
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
 
     useEffect(() => {
-
-        document.addEventListener('scroll', scrollHandler)
-        return function () {
-            document.removeEventListener('scroll', scrollHandler)
+        if (!isLoading) {
+            document.addEventListener('scroll', scrollHandler)
+            return function () {
+                document.removeEventListener('scroll', scrollHandler)
+            }
         }
     }, [data])
 
     const scrollHandler = (e: any) => {
-            if(e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100){
-                setItems(items + 1);
-            }
+        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+            setItems(items + 1);
+        }
     }
 
     return (
@@ -34,7 +35,26 @@ const CoinsTable = () => {
                     <RingLoader color={'#36d7b7'} size={'100px'}/>
                 </Row>
             ) : data ? (
-                <Row>{
+                <Row>
+                     <Col>
+                         <p>Иконка</p>
+                     </Col>
+                    <Col>
+                        <p>Символ</p>
+                    </Col>
+                    <Col>
+                        <p>Цена в USD</p>
+                    </Col>
+                    <Col>
+                        <p>Рыночная капитализация в USD</p>
+                    </Col>
+                    <Col>
+                        <p>Изменение цена за 24 часаы</p>
+                    </Col>
+                    <Col>
+                        <p>Возможность добавить в портфель</p>
+                    </Col>
+                    {
                     data.data.map(coinData => (
                         <CoinItem key={coinData.id} data={coinData}/>
                     ))}
