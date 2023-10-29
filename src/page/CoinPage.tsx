@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import { useGetOneCoinQuery} from "../redux/query/CoinQuery";
 import { Col, Container, Row} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
+import secondNumberAfterDot from "../utils/secondNumberAfterDot";
 
 const CoinPage = () => {
     const {id} = useParams<string>();
@@ -26,16 +27,16 @@ const CoinPage = () => {
                             <p>{data.data.symbol}</p>
                         </Col>
                         <Col>
-                            <p>{data.data.supply}</p>
+                            <p>{secondNumberAfterDot(data.data.supply)}</p>
                         </Col>
                         <Col>
-                            <p>{data.data.priceUsd}</p>
+                            <p>{secondNumberAfterDot(data.data.priceUsd)}</p>
                         </Col>
                         <Col>
-                            <p>{data.data.marketCapUsd}</p>
+                            <p>{secondNumberAfterDot(data.data.marketCapUsd)}</p>
                         </Col>
                         <Col>
-                            <p>{data.data.maxSupply}</p>
+                            <p>{secondNumberAfterDot(data.data.maxSupply)}</p>
                         </Col>
                     </Row>
                 </Container>

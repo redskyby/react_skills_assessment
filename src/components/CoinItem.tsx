@@ -2,6 +2,7 @@ import React from 'react';
 import {Col, Container, Image, Row , Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {COIN_ROUTE} from "../utils/route_path";
+import secondNumberAfterDot from "../utils/secondNumberAfterDot";
 
 interface CoinData {
     id: string;
@@ -28,6 +29,8 @@ const CoinItem = ({data}: { data: CoinData }) => {
 
     }
 
+
+
     return (
         <Container >
             <Row onClick={ e => showPageOfCoin(e , data.id)}>
@@ -38,13 +41,13 @@ const CoinItem = ({data}: { data: CoinData }) => {
                    <p>{data.symbol}</p>
                 </Col>
                 <Col>
-                    <p>{data.priceUsd} </p>
+                    <p>{secondNumberAfterDot(data.priceUsd)} </p>
                 </Col>
                 <Col>
-                    <p>{data.marketCapUsd}</p>
+                    <p>{secondNumberAfterDot(data.marketCapUsd)}</p>
                 </Col>
                 <Col>
-                    <p>{data.changePercent24Hr}</p>
+                    <p>{secondNumberAfterDot(data.changePercent24Hr)}</p>
                 </Col>
                 <Col>
                     <Button

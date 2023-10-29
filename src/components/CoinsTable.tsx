@@ -5,7 +5,7 @@ import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 
 const CoinsTable = () => {
-    const [items, setItems] = useState(16);
+    const [items, setItems] = useState(25);
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
 
