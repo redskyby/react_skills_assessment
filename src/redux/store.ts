@@ -5,18 +5,16 @@ import coins from './slice/CoinSlice';
 
 
 const rootReducer = combineReducers({
-    isCoinToolkit : coins,
+    isCoinToolkit: coins,
     [coinQueryApi.reducerPath]: coinQueryApi.reducer
 })
 
-
-
 export const store = configureStore({
-        reducer: rootReducer,
+    reducer: rootReducer,
 
-        middleware: (getDefaultMiddleware) =>
-             getDefaultMiddleware().concat(coinQueryApi.middleware)
-    })
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(coinQueryApi.middleware)
+})
 
 setupListeners(store.dispatch);
 export type RootState = ReturnType<typeof rootReducer>
