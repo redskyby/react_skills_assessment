@@ -14,7 +14,7 @@ export interface CoinData {
         vwap24Hr: string;
 }
 
-interface CoinDataResponse {
+export interface CoinDataResponse {
     data: CoinData[];
 }
 

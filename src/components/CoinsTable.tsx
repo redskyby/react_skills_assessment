@@ -3,15 +3,21 @@ import {useGetAllCoinsQuery} from "../redux/query/CoinQuery";
 import {Col, Container, Row} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
+import {useDispatch} from "react-redux";
+import {SET_ALL_COINS} from "../redux/slice/CoinSlice";
+
 
 const CoinsTable = () => {
     const [items, setItems] = useState(25);
+    const dispatch = useDispatch();
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
 
+
     useEffect(() => {
         if (!isLoading) {
-            document.addEventListener('scroll', scrollHandler)
+            document.addEventListener('scroll', scrollHandler);
+            dispatch(SET_ALL_COINS(data!));
             return function () {
                 document.removeEventListener('scroll', scrollHandler)
             }
@@ -49,7 +55,7 @@ const CoinsTable = () => {
                         <p>Рыночная капитализация в USD</p>
                     </Col>
                     <Col>
-                        <p>Изменение цена за 24 часаы</p>
+                        <p>Изменение цена за 24 часа</p>
                     </Col>
                     <Col>
                         <p>Возможность добавить в портфель</p>
