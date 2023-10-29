@@ -1,6 +1,4 @@
-export default function secondNumberAfterDot(a: string): string {
-    if(Number(a) % 1 === 0){
-        return Number(a).toFixed(0);
-    }
-    return Number(a).toFixed(2);
+export default function secondNumberAfterDot(a: string ): string {
+    const rounded = Math.round(Number(a) * 100) / 100;
+    return (rounded === Math.floor(rounded)) ? rounded.toFixed(0) : rounded.toFixed(2);
 }
