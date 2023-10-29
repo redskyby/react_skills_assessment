@@ -3,19 +3,12 @@ import {Form, FormGroup, ListGroup} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../redux/store";
+import {COIN_ROUTE} from "../utils/route_path";
 
 const SearchForm = () => {
     const history = useNavigate();
     const [coin, setCoin] = useState('');
     const coins = useSelector((state: RootState) => state.isCoinToolkit.coins);
-    const [currentlyArray , setCurrentlyArray] = useState<[]>();
-
-    // const filteredCoins = coins?.data
-    //     ? coins.data.filter((coinSearch) => {
-    //         const name = coinSearch.id.toLowerCase();
-    //         return name.includes(coin.toLowerCase());
-    //     })
-    //     : [];
 
     const filteredCoins = coin
         ? coins?.data
@@ -39,7 +32,10 @@ const SearchForm = () => {
             </FormGroup>
             <ListGroup>
                 {filteredCoins.map((coin) => (
-                    <ListGroup.Item key={coin.id}>{coin.name}</ListGroup.Item>
+                    <ListGroup.Item
+                        key={coin.id}
+                        onClick={e =>  history(COIN_ROUTE + `/${coin.id}`)}
+                    >{coin.name}</ListGroup.Item>
                 ))}
             </ListGroup>
         </Form>
