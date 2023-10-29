@@ -3,6 +3,7 @@ import {Col, Container, Image, Row , Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {COIN_ROUTE} from "../utils/route_path";
 import secondNumberAfterDot from "../utils/secondNumberAfterDot";
+import icon from  "../utils/imgIcon/favicon.png";
 
 interface CoinData {
     id: string;
@@ -29,13 +30,11 @@ const CoinItem = ({data}: { data: CoinData }) => {
 
     }
 
-
-
     return (
         <Container >
             <Row onClick={ e => showPageOfCoin(e , data.id)}>
                 <Col>
-                    <Image src={data.symbol} />
+                    <Image src={icon} />
                 </Col>
                 <Col>
                    <p>{data.symbol}</p>
