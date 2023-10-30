@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 import {useGetOneCoinQuery} from "../redux/query/CoinQuery";
-import { Container, Image, Row, Table} from "react-bootstrap";
+import {Container, Image, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import secondNumberAfterDot from "../utils/secondNumberAfterDot";
 import icon from "../utils/imgIcon/favicon.png";
@@ -23,7 +23,7 @@ const CoinPage = () => {
             ) : data ? (
                 <Container>
                     <Row className={'text-center'}><h1>{data.data.id}</h1></Row>
-                    <Table>
+                    <Table responsive style={{'textAlign': 'center'}}>
                         <thead>
                         <tr>
                             <th>Изображение монеты</th>
@@ -37,30 +37,32 @@ const CoinPage = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        <td>
-                            <Image src={icon}/>
-                        </td>
-                        <td>
-                            {data.data.id}
-                        </td>
-                        <td>
-                            {data.data.symbol}
-                        </td>
-                        <td>
-                            {data.data.rank}
-                        </td>
-                        <td>
-                            {secondNumberAfterDot(data.data.supply)}
-                        </td>
-                        <td>
-                            {secondNumberAfterDot(data.data.priceUsd)}
-                        </td>
-                        <td>
-                            {secondNumberAfterDot(data.data.marketCapUsd)}
-                        </td>
-                        <td>
-                            {secondNumberAfterDot(data.data.maxSupply)}
-                        </td>
+                        <tr>
+                            <td>
+                                <Image src={icon}/>
+                            </td>
+                            <td>
+                                {data.data.id}
+                            </td>
+                            <td>
+                                {data.data.symbol}
+                            </td>
+                            <td>
+                                {data.data.rank}
+                            </td>
+                            <td>
+                                {secondNumberAfterDot(data.data.supply)}
+                            </td>
+                            <td>
+                                {secondNumberAfterDot(data.data.priceUsd)}
+                            </td>
+                            <td>
+                                {secondNumberAfterDot(data.data.marketCapUsd)}
+                            </td>
+                            <td>
+                                {secondNumberAfterDot(data.data.maxSupply)}
+                            </td>
+                        </tr>
                         </tbody>
                     </Table>
                 </Container>

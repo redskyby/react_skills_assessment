@@ -41,7 +41,7 @@ const CoinsTable = () => {
                     <RingLoader color={'#36d7b7'} size={'100px'}/>
                 </Row>
             ) : data ? (
-                <Table>
+                <Table responsive style={{'textAlign': 'center'}}>
                     <thead>
                     <tr>
                         <th>Иконка</th>
