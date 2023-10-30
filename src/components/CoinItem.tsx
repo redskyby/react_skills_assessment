@@ -1,9 +1,9 @@
 import React from 'react';
-import {Col, Container, Image, Row , Button} from "react-bootstrap";
+import {Image, Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {COIN_ROUTE} from "../utils/route_path";
 import secondNumberAfterDot from "../utils/secondNumberAfterDot";
-import icon from  "../utils/imgIcon/favicon.png";
+import icon from "../utils/imgIcon/favicon.png";
 
 interface CoinData {
     id: string;
@@ -22,39 +22,38 @@ interface CoinData {
 
 const CoinItem = ({data}: { data: CoinData }) => {
 
-     const history = useNavigate();
+    const history = useNavigate();
 
-    function showPageOfCoin(e : any , id : string): void {
+    function showPageOfCoin(e: any, id: string): void {
         e.preventDefault();
         history(COIN_ROUTE + '/' + id);
 
     }
 
     return (
-        <Container >
-            <Row onClick={ e => showPageOfCoin(e , data.id)}>
-                <Col>
-                    <Image src={icon} />
-                </Col>
-                <Col>
-                   <p>{data.symbol}</p>
-                </Col>
-                <Col>
-                    <p>{secondNumberAfterDot(data.priceUsd)} </p>
-                </Col>
-                <Col>
-                    <p>{secondNumberAfterDot(data.marketCapUsd)}</p>
-                </Col>
-                <Col>
-                    <p>{secondNumberAfterDot(data.changePercent24Hr)}</p>
-                </Col>
-                <Col>
-                    <Button
-                        type={'button'}
-                    >Добавить в портфель</Button>
-                </Col>
-            </Row>
-        </Container>
+        <tr onClick={e => showPageOfCoin(e, data.id)}>
+            <td>
+                <Image src={icon}/>
+            </td>
+            <td>
+                {data.symbol}
+            </td>
+            <td>
+                {secondNumberAfterDot(data.priceUsd)}
+            </td>
+            <td>
+                {secondNumberAfterDot(data.marketCapUsd)}
+            </td>
+            <td>
+                {secondNumberAfterDot(data.marketCapUsd)}
+            </td>
+            <td>
+                <Button
+                    type={'button'}
+                >Добавить в портфель</Button>
+            </td>
+        </tr>
+
     );
 };
 

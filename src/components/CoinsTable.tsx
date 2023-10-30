@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useGetAllCoinsQuery} from "../redux/query/CoinQuery";
-import {Col, Container, Row} from "react-bootstrap";
+import { Container, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 import {useDispatch} from "react-redux";
@@ -41,30 +41,23 @@ const CoinsTable = () => {
                     <RingLoader color={'#36d7b7'} size={'100px'}/>
                 </Row>
             ) : data ? (
-                <Row>
-                     <Col>
-                         <p>Иконка</p>
-                     </Col>
-                    <Col>
-                        <p>Символ</p>
-                    </Col>
-                    <Col>
-                        <p>Цена в USD</p>
-                    </Col>
-                    <Col>
-                        <p>Рыночная капитализация в USD</p>
-                    </Col>
-                    <Col>
-                        <p>Изменение цена за 24 часа</p>
-                    </Col>
-                    <Col>
-                        <p>Возможность добавить в портфель</p>
-                    </Col>
-                    {
-                    data.data.map(coinData => (
+                <Table>
+                    <thead>
+                    <tr>
+                        <th>Иконка</th>
+                        <th>Символ</th>
+                        <th>Цена в USD</th>
+                        <th>Рыночная капитализация в USD</th>
+                        <th>Возможность добавить в портфель</th>
+                        <th>Возможность добавить в портфел</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {data.data.map(coinData => (
                         <CoinItem key={coinData.id} data={coinData}/>
                     ))}
-                </Row>
+                    </tbody>
+                </Table>
             ) : null
 
             }
