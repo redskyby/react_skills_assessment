@@ -1,9 +1,10 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-import { useGetOneCoinQuery} from "../redux/query/CoinQuery";
-import { Col, Container, Row} from "react-bootstrap";
+import {useGetOneCoinQuery} from "../redux/query/CoinQuery";
+import { Container, Image, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import secondNumberAfterDot from "../utils/secondNumberAfterDot";
+import icon from "../utils/imgIcon/favicon.png";
 
 const CoinPage = () => {
     const {id} = useParams<string>();
@@ -22,23 +23,46 @@ const CoinPage = () => {
             ) : data ? (
                 <Container>
                     <Row className={'text-center'}><h1>{data.data.id}</h1></Row>
-                    <Row>
-                        <Col>
-                            <p>{data.data.symbol}</p>
-                        </Col>
-                        <Col>
-                            <p>{secondNumberAfterDot(data.data.supply)}</p>
-                        </Col>
-                        <Col>
-                            <p>{secondNumberAfterDot(data.data.priceUsd)}</p>
-                        </Col>
-                        <Col>
-                            <p>{secondNumberAfterDot(data.data.marketCapUsd)}</p>
-                        </Col>
-                        <Col>
-                            <p>{secondNumberAfterDot(data.data.maxSupply)}</p>
-                        </Col>
-                    </Row>
+                    <Table>
+                        <thead>
+                        <tr>
+                            <th>Изображение монеты</th>
+                            <th>Название монеты</th>
+                            <th>Символ монеты</th>
+                            <th>rank</th>
+                            <th>Supply</th>
+                            <th>Цена в USD</th>
+                            <th>Рыночная капитализация в USD</th>
+                            <th>maxSupply</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <td>
+                            <Image src={icon}/>
+                        </td>
+                        <td>
+                            {data.data.id}
+                        </td>
+                        <td>
+                            {data.data.symbol}
+                        </td>
+                        <td>
+                            {data.data.rank}
+                        </td>
+                        <td>
+                            {secondNumberAfterDot(data.data.supply)}
+                        </td>
+                        <td>
+                            {secondNumberAfterDot(data.data.priceUsd)}
+                        </td>
+                        <td>
+                            {secondNumberAfterDot(data.data.marketCapUsd)}
+                        </td>
+                        <td>
+                            {secondNumberAfterDot(data.data.maxSupply)}
+                        </td>
+                        </tbody>
+                    </Table>
                 </Container>
             ) : null
 
