@@ -34,7 +34,7 @@ const SearchForm = () => {
                 {filteredCoins.map((coin) => (
                     <ListGroup.Item style={{cursor : 'pointer'}}
                         key={coin.id}
-                        onClick={e =>  history(COIN_ROUTE + `/${coin.id}`)}
+                        onClick={() =>  history(COIN_ROUTE + `/${coin.id}`)}
                     >{coin.name}</ListGroup.Item>
                 ))}
             </ListGroup>
