@@ -20,7 +20,7 @@ const SearchForm = () => {
         : [];
 
     return (
-        <Form style={{position: "relative"}}>
+        <Form>
             <FormGroup controlId={'searchForm'}>
                 <Form.Label>Поиск монеты по названию</Form.Label>
                 <Form.Control
@@ -30,7 +30,7 @@ const SearchForm = () => {
                     onChange={(e) => setCoin(e.target.value)}
                 />
             </FormGroup>
-            <ListGroup style={{position: "absolute" , top : '110%' , left : '0'}}>
+            <ListGroup>
                 {filteredCoins.map((coin) => (
                     <ListGroup.Item style={{cursor : 'pointer'}}
                         key={coin.id}
