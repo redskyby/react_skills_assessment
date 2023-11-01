@@ -25,7 +25,7 @@ const SearchForm = () => {
                 <Form.Label>Поиск монеты по названию</Form.Label>
                 <Form.Control
                     type={'text'}
-                    placeholder={'Введите название монеты'}
+                    placeholder={'Введите название'}
                     value={coin}
                     onChange={(e) => setCoin(e.target.value)}
                 />
