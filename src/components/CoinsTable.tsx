@@ -13,7 +13,6 @@ const CoinsTable = () => {
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
 
-
     useEffect(() => {
         if (!isLoading) {
             document.addEventListener('scroll', scrollHandler);
@@ -54,7 +53,10 @@ const CoinsTable = () => {
                     </thead>
                     <tbody>
                     {data.data.map(coinData => (
-                        <CoinItem key={coinData.id} data={coinData}/>
+                        <CoinItem
+                            key={coinData.id}
+                            data={coinData}
+                            />
                     ))}
                     </tbody>
                 </Table>
