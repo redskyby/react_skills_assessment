@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CoinData, CoinDataResponse} from "../query/CoinQuery";
+import {CoinData} from "../query/CoinQuery";
 
 const initialState = {
     coins: [] as CoinData[],
