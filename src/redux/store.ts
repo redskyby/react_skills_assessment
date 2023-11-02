@@ -7,7 +7,7 @@ import suitCase from './slice/SuitCaseSlice';
 
 const rootReducer = combineReducers({
     isCoinToolkit: coins,
-    isSuitCase : suitCase,
+    isSuitCaseToolkit : suitCase,
     [coinQueryApi.reducerPath]: coinQueryApi.reducer
 })
 

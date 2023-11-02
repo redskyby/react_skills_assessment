@@ -6,7 +6,7 @@ import secondNumberAfterDot from "../utils/secondNumberAfterDot";
 import icon from "../utils/imgIcon/favicon.png";
 import {useDispatch, useSelector} from "react-redux";
 import {ADD_IN_ONE_SUIT} from "../redux/slice/SuitCaseSlice";
-import {RootState} from "../redux/store";
+
 
 interface CoinData {
     id: string;
@@ -26,7 +26,7 @@ interface CoinData {
 const CoinItem = ({data}: { data: CoinData }) => {
     const history = useNavigate();
     const dispatch = useDispatch();
-    const coins = useSelector((state: RootState) => state.isCoinToolkit.coins);
+
 
     function showPageOfCoin(e: React.MouseEvent, id: string): void {
         e.preventDefault();

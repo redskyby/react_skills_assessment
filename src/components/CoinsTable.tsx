@@ -13,6 +13,7 @@ const CoinsTable = () => {
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
 
+
     useEffect(() => {
         if (!isLoading) {
             document.addEventListener('scroll', scrollHandler);
