@@ -13,6 +13,11 @@ const CoinsTable = () => {
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
 
+    const scrollHandler = (e: any) => {
+        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+            setItems(items + 1);
+        }
+    }
 
     useEffect(() => {
         if (!isLoading) {
@@ -22,13 +27,9 @@ const CoinsTable = () => {
                 document.removeEventListener('scroll', scrollHandler)
             }
         }
-    }, [data])
+    }, [data, dispatch, isLoading, scrollHandler]);
 
-    const scrollHandler = (e: any) => {
-        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-            setItems(items + 1);
-        }
-    }
+
 
     return (
         <Container>
