@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Modal, Table} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
+import TableForSuitCase from "./TableForSuitCase";
 
 const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const coins = useSelector((state: RootState) => state.isSuitCaseToolkit.coins);
@@ -25,6 +26,7 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
                     </thead>
                     <tbody>
                     {
+                        coins.map(coin => <TableForSuitCase data={coin}/>)
 
                     }
                     </tbody>
