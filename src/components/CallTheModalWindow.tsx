@@ -3,7 +3,7 @@ import Suitcase from "./modal/Suitcase";
 import {Button} from "react-bootstrap";
 
 const CallTheModalWindow = () => {
-    const [show, setShow] = useState<boolean>(true);
+    const [show, setShow] = useState<boolean>(false);
 
     return (
         <div>

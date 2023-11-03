@@ -13,24 +13,27 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
                 Портфель монет
             </Modal.Header>
             <Modal.Body>
-                <Table responsive style={{'textAlign': 'center'}}>
-                    <thead>
-                    <tr>
-                        <th>Иконка</th>
-                        <th>Символ</th>
-                        <th>Цена в USD</th>
-                        <th>Рыночная капитализация в USD</th>
-                        <th>Возможность добавить в портфель</th>
-                        <th>Возможность добавить в портфел</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        coins.map(coin => <TableForSuitCase data={coin}/>)
+                {coins.length === 0 ? <h2 className={'text-center'}>Портфель пуст!</h2>
 
-                    }
-                    </tbody>
-                </Table>
+                    : <Table responsive style={{'textAlign': 'center'}}>
+                        <thead>
+                        <tr>
+                            <th>Иконка</th>
+                            <th>Символ</th>
+                            <th>Цена в USD</th>
+                            <th>Рыночная капитализация в USD</th>
+                            <th>Возможность добавить в портфель</th>
+                            <th>Возможность добавить в портфел</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            coins.map(coin => <TableForSuitCase data={coin}/>)
+
+                        }
+                        </tbody>
+                    </Table>
+                }
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={() => setShow(false)}>
