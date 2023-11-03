@@ -27,7 +27,7 @@ const CoinsTable = () => {
                 document.removeEventListener('scroll', scrollHandler)
             }
         }
-    }, [data, dispatch, isLoading, scrollHandler]);
+    }, [data, dispatch, isLoading]);
 
 
 
