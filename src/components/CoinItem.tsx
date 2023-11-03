@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {COIN_ROUTE} from "../utils/route_path";
 import secondNumberAfterDot from "../utils/secondNumberAfterDot";
 import icon from "../utils/imgIcon/favicon.png";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {ADD_IN_ONE_SUIT} from "../redux/slice/SuitCaseSlice";
 
 
