@@ -27,14 +27,14 @@ const CoinPage = () => {
                     <Table responsive style={{'textAlign': 'center'}}>
                         <thead>
                         <tr>
-                            <th>Изображение монеты</th>
-                            <th>Название монеты</th>
-                            <th>Символ монеты</th>
-                            <th>rank</th>
-                            <th>Supply</th>
-                            <th>Цена в USD</th>
-                            <th>Рыночная капитализация в USD</th>
-                            <th>maxSupply</th>
+                            <th className={'align-middle'}>Изображение монеты</th>
+                            <th className={'align-middle'}>Название монеты</th>
+                            <th className={'align-middle'}>Символ монеты</th>
+                            <th className={'align-middle'}>rank</th>
+                            <th className={'align-middle'}>Supply</th>
+                            <th className={'align-middle'}>Цена в USD</th>
+                            <th className={'align-middle'}>Рыночная капитализация в USD</th>
+                            <th className={'align-middle'}>maxSupply</th>
                         </tr>
                         </thead>
                         <tbody>
