@@ -28,7 +28,7 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
                         </thead>
                         <tbody>
                         {
-                            coins.map(coin => <TableForSuitCase data={coin}/>)
+                            coins.map(coin => <TableForSuitCase key={coin.id} data={coin}/>)
 
                         }
                         </tbody>
