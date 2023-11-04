@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useGetAllCoinsQuery} from "../redux/query/CoinQuery";
 import { Container, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
@@ -13,11 +13,17 @@ const CoinsTable = () => {
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
 
-    const scrollHandler = (e: any) => {
-        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-            setItems(items + 1);
+    // const scrollHandler = () => {
+    //     if (document.documentElement.scrollHeight - (document.documentElement.scrollTop + window.innerHeight) < 100) {
+    //         setItems(items + 1);
+    //     }
+    // }
+    const scrollHandler = useCallback(() => {
+        if (document.documentElement.scrollHeight - (document.documentElement.scrollTop + window.innerHeight) < 100) {
+            setItems((prevItems) => prevItems + 1);
         }
-    }
+    }, []);
+
 
     useEffect(() => {
         if (!isLoading) {
@@ -27,7 +33,7 @@ const CoinsTable = () => {
                 document.removeEventListener('scroll', scrollHandler)
             }
         }
-    }, [data, dispatch, isLoading]);
+    },  [data, dispatch, isLoading, scrollHandler]);
 
 
 
