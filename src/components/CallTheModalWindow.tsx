@@ -6,7 +6,7 @@ const CallTheModalWindow = () => {
     const [show, setShow] = useState<boolean>(false);
 
     return (
-        <div>
+        <div className={'mt-3'}>
             <Button
                 type={'button'}
                 onClick={() => setShow(true)}

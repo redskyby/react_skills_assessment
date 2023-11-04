@@ -9,7 +9,7 @@ const NavBar = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <ThirdTheMostPopularCoins/>
+                <ThirdTheMostPopularCoins />
                 <CallTheModalWindow/>
                 <SearchForm/>
             </Container>
