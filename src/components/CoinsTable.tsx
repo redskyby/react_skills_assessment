@@ -51,12 +51,12 @@ const CoinsTable = () => {
                 <Table responsive style={{'textAlign': 'center'}}>
                     <thead>
                     <tr>
-                        <th>Иконка</th>
-                        <th>Символ</th>
-                        <th>Цена в USD</th>
-                        <th>Рыночная капитализация в USD</th>
-                        <th>Возможность добавить в портфель</th>
-                        <th>Возможность добавить в портфел</th>
+                        <th className={'align-middle'}>Иконка</th>
+                        <th className={'align-middle'}>Символ</th>
+                        <th className={'align-middle'}>Цена в USD</th>
+                        <th className={'align-middle'}>Рыночная капитализация в USD</th>
+                        <th className={'align-middle'}>Возможность добавить в портфель</th>
+                        <th className={'align-middle'}>Возможность добавить в портфел</th>
                     </tr>
                     </thead>
                     <tbody>

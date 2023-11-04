@@ -15,15 +15,15 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
             <Modal.Body>
                 {coins.length === 0 ? <h2 className={'text-center'}>Портфель пуст!</h2>
 
-                    : <Table responsive style={{'textAlign': 'center'}}>
+                    : <Table responsive>
                         <thead>
                         <tr>
-                            <th>Иконка</th>
-                            <th>Символ</th>
-                            <th>Цена в USD</th>
-                            <th>Рыночная капитализация в USD</th>
-                            <th>Возможность добавить в портфель</th>
-                            <th>Возможность добавить в портфел</th>
+                            <th className={'align-middle text-center'}>Иконка</th>
+                            <th className={'align-middle text-center'}>Символ</th>
+                            <th className={'align-middle text-center'}>Цена в USD</th>
+                            <th className={'align-middle text-center'}>Рыночная капитализация в USD</th>
+                            <th className={'align-middle text-center'}>Возможность добавить в портфель</th>
+                            <th className={'align-middle text-center'}>Возможность добавить в портфел</th>
                         </tr>
                         </thead>
                         <tbody>
