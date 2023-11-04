@@ -17,7 +17,7 @@ const ThirdTheMostPopularCoins = () => {
         <ListGroup>
             {
                 firstThreeCoins?.map((item) =>
-                    <ListGroupItem key={item.id}>{item.name} имеет цену: {secondNumberAfterDot(item.priceUsd)}</ListGroupItem>
+                    <ListGroupItem key={item.id}>{item.name} имеет цену: {secondNumberAfterDot(item.priceUsd)}$</ListGroupItem>
                 )
             }
         </ListGroup>

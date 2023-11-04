@@ -1,10 +1,11 @@
 import React from 'react';
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import {useGetOneCoinQuery} from "../redux/query/CoinQuery";
 import {Container, Image, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import secondNumberAfterDot from "../utils/secondNumberAfterDot";
 import icon from "../utils/imgIcon/favicon.png";
+import {SHOP_ROUTE} from "../utils/route_path";
 
 const CoinPage = () => {
     const {id} = useParams<string>();
@@ -65,6 +66,9 @@ const CoinPage = () => {
                         </tr>
                         </tbody>
                     </Table>
+                    <Row>
+                        <NavLink to={SHOP_ROUTE}>Вернуться на главную страницу</NavLink>
+                    </Row>
                 </Container>
             ) : null
 

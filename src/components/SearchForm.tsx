@@ -19,27 +19,34 @@ const SearchForm = () => {
             : []
         : [];
 
+
+    const GoToCoinPage = (id: string): void => {
+        setCoin('');
+        history(COIN_ROUTE + `/${id}`);
+    }
+
     return (
-        <Form>
-            <FormGroup controlId={'searchForm'}>
-                <Form.Label>Поиск монеты по названию</Form.Label>
-                <Form.Control
-                    type={'text'}
-                    placeholder={'Введите название'}
-                    value={coin}
-                    onChange={(e) => setCoin(e.target.value)}
-                />
-            </FormGroup>
-            <ListGroup>
-                {filteredCoins.map((coin) => (
-                    <ListGroup.Item style={{cursor : 'pointer'}}
-                        key={coin.id}
-                        onClick={() =>  history(COIN_ROUTE + `/${coin.id}`)}
-                    >{coin.name}</ListGroup.Item>
-                ))}
-            </ListGroup>
-        </Form>
-    );
+            <Form style={{'position': 'relative'}}>
+                <FormGroup controlId={'searchForm'}>
+                    <Form.Label>Поиск монеты по названию</Form.Label>
+                    <Form.Control
+                        type={'text'}
+                        placeholder={'Введите название'}
+                        value={coin}
+                        onChange={(e) => setCoin(e.target.value)}
+                    />
+                </FormGroup>
+                    <ListGroup style={{'position': 'absolute', 'top': '110%'}}>
+                        {filteredCoins.map((coin) => (
+                            <ListGroup.Item style={{cursor: 'pointer'}}
+                                            key={coin.id}
+                                            onClick={() => GoToCoinPage(coin.id)}
+                            >{coin.name}</ListGroup.Item>
+                        ))}
+                    </ListGroup>
+            </Form>
+)
+    ;
 };
 
 export default SearchForm;
