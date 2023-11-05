@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {COIN_ROUTE} from "../../utils/route_path";
-import style from './SearchForm.module.css';
+import style from './SearchForm.module.scss';
 
 const SearchForm = () => {
     const history = useNavigate();
