@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Navbar} from "react-bootstrap";
-import SearchForm from "./SearchForm";
+import SearchForm from "./SearchForm/SearchForm";
 import ThirdTheMostPopularCoins from "./ThirdTheMostPopularCoins";
 import CallTheModalWindow from "./CallTheModalWindow";
 
