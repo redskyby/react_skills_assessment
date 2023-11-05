@@ -40,22 +40,22 @@ const CoinItem = ({data}: { data: CoinData }) => {
 
     return (
         <tr onClick={e => showPageOfCoin(e, data.id)}>
-            <td>
+            <td className={'align-middle'}>
                 <Image src={icon}/>
             </td>
-            <td>
+            <td className={'align-middle'}>
                 {data.symbol}
             </td>
-            <td>
+            <td className={'align-middle'}>
                 {secondNumberAfterDot(data.priceUsd)}
             </td>
-            <td>
+            <td className={'align-middle'}>
                 {secondNumberAfterDot(data.marketCapUsd)}
             </td>
-            <td>
+            <td className={'align-middle'}>
                 {secondNumberAfterDot(data.marketCapUsd)}
             </td>
-            <td>
+            <td className={'align-middle'}>
                 <Button
                     type={'button'}
                     onClick={e => addInSuitCase(e, data)}
