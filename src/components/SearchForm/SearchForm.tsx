@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {COIN_ROUTE} from "../../utils/route_path";
+import style from './SearchForm.module.css';
 
 const SearchForm = () => {
     const history = useNavigate();
@@ -39,18 +40,9 @@ const SearchForm = () => {
     }
 
     return (
-        <div style={{position: 'relative'}} className={'mt-3'}>
-            {showBackground && <div style={{
-                'position': 'fixed',
-                'top': 0,
-                'left': 0,
-                'width': '100%',
-                'height': '100%',
-                'backgroundColor': 'rgba(0, 0, 0, 0.5)',
-                'zIndex': 0,
-            }
-            }/>}
-            <Form onFocus={handleFormFocus} onBlur={handleFormBlur} style={{position: 'relative', zIndex: 1}}>
+        <div className={`mt-3 ${style.first_block}`}>
+            {showBackground && <div className={style.second_block}/>}
+            <Form onFocus={handleFormFocus} onBlur={handleFormBlur} className={style.form}>
                 <FormGroup>
                     <Form.Label>Поиск монеты по названию</Form.Label>
                     <Form.Control
@@ -60,9 +52,9 @@ const SearchForm = () => {
                         onChange={(e) => setCoin(e.target.value)}
                     />
                 </FormGroup>
-                <ListGroup style={{'position': 'absolute', 'top': '110%'}}>
+                <ListGroup className={style.listGroup}>
                     {filteredCoins.map((coin) => (
-                        <ListGroup.Item style={{cursor: 'pointer'}}
+                        <ListGroup.Item className={style.listGroup_item}
                                         key={coin.id}
                                         onClick={() => GoToCoinPage(coin.id)}
                         >{coin.name}</ListGroup.Item>

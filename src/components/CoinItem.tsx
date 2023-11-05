@@ -33,9 +33,9 @@ const CoinItem = ({data}: { data: CoinData }) => {
         history(COIN_ROUTE + '/' + id);
     }
 
-    function addInSuitCase(e : React.MouseEvent , data :CoinData) {
+    function addInSuitCase(e: React.MouseEvent, data: CoinData) {
         e.stopPropagation();
-         dispatch(ADD_IN_ONE_SUIT(data));
+        dispatch(ADD_IN_ONE_SUIT(data));
     }
 
     return (
@@ -58,7 +58,7 @@ const CoinItem = ({data}: { data: CoinData }) => {
             <td>
                 <Button
                     type={'button'}
-                    onClick={e => addInSuitCase(e , data)}
+                    onClick={e => addInSuitCase(e, data)}
                 >Добавить в портфель</Button>
             </td>
         </tr>

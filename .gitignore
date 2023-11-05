@@ -154,3 +154,7 @@ yarn-error.log*
 
 #php storm
 .idea
+
+# Ignore CSS module files and their source maps
+*module.css.map
+*module.css

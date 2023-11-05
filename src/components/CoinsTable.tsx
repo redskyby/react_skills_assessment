@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useGetAllCoinsQuery} from "../redux/query/CoinQuery";
-import { Container, Row, Table} from "react-bootstrap";
+import {Container, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 import {useDispatch} from "react-redux";
@@ -33,15 +33,14 @@ const CoinsTable = () => {
                 document.removeEventListener('scroll', scrollHandler)
             }
         }
-    },  [data, dispatch, isLoading, scrollHandler]);
-
+    }, [data, dispatch, isLoading, scrollHandler]);
 
 
     return (
         <Container>
             {error ? (
                 <Row className={'text-center'}>
-                    <h1>Ошибка при загрузке данных, проверите сетивое соединение</h1>
+                    <h1>Ошибка при загрузке данных, проверьте сетевое соединение.</h1>
                 </Row>
             ) : isLoading ? (
                 <Row className={'d-flex justify-content-center align-items-center'} style={{height: "100vh"}}>
@@ -64,7 +63,7 @@ const CoinsTable = () => {
                         <CoinItem
                             key={coinData.id}
                             data={coinData}
-                            />
+                        />
                     ))}
                     </tbody>
                 </Table>
