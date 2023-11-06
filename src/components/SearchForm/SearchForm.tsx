@@ -44,7 +44,7 @@ const SearchForm = () => {
             {showBackground && <div className={style.second_block}/>}
             <Form onFocus={handleFormFocus} onBlur={handleFormBlur} className={style.form}>
                 <FormGroup>
-                    <Form.Label>Поиск монеты по названию</Form.Label>
+                    <Form.Label>Поиск монеты по названию:</Form.Label>
                     <Form.Control
                         type={'text'}
                         placeholder={'Введите название'}

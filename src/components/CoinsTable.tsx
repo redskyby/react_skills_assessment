@@ -54,7 +54,7 @@ const CoinsTable = () => {
                         <th className={'align-middle'}>Символ</th>
                         <th className={'align-middle'}>Цена в USD</th>
                         <th className={'align-middle'}>Рыночная капитализация в USD</th>
-                        <th className={'align-middle'}>Возможность добавить в портфель</th>
+                        <th className={'align-middle'}>Изменение цены за 24 часа в %</th>
                         <th className={'align-middle'}>Возможность добавить в портфел</th>
                     </tr>
                     </thead>

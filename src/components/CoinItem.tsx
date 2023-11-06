@@ -53,7 +53,7 @@ const CoinItem = ({data}: { data: CoinData }) => {
                 {secondNumberAfterDot(data.marketCapUsd)}
             </td>
             <td className={'align-middle'}>
-                {secondNumberAfterDot(data.marketCapUsd)}
+                {secondNumberAfterDot(data.changePercent24Hr)}
             </td>
             <td className={'align-middle'}>
                 <Button
