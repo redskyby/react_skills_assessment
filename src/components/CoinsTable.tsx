@@ -5,10 +5,12 @@ import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 import {useDispatch} from "react-redux";
 import {SET_ALL_COINS} from "../redux/slice/CoinSlice";
+import SortForm from "./SortForm/SortForm";
 
 
 const CoinsTable = () => {
     const [items, setItems] = useState(25);
+    const [sort , setSort] = useState('');
     const dispatch = useDispatch();
 
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
@@ -47,26 +49,33 @@ const CoinsTable = () => {
                     <RingLoader color={'#36d7b7'} size={'100px'}/>
                 </Row>
             ) : data ? (
-                <Table responsive style={{'textAlign': 'center'}}>
-                    <thead>
-                    <tr>
-                        <th className={'align-middle'}>Иконка</th>
-                        <th className={'align-middle'}>Символ</th>
-                        <th className={'align-middle'}>Цена в USD</th>
-                        <th className={'align-middle'}>Рыночная капитализация в USD</th>
-                        <th className={'align-middle'}>Изменение цены за 24 часа в %</th>
-                        <th className={'align-middle'}>Возможность добавить в портфел</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {data.data.map(coinData => (
-                        <CoinItem
-                            key={coinData.id}
-                            data={coinData}
-                        />
-                    ))}
-                    </tbody>
-                </Table>
+                <Container>
+                    <Row>
+                        <SortForm setForm={setSort} sort={sort}/>
+                    </Row>
+                    <Row>
+                        <Table responsive style={{'textAlign': 'center'}}>
+                            <thead>
+                            <tr>
+                                <th className={'align-middle'}>Иконка</th>
+                                <th className={'align-middle'}>Символ</th>
+                                <th className={'align-middle'}>Цена в USD</th>
+                                <th className={'align-middle'}>Рыночная капитализация в USD</th>
+                                <th className={'align-middle'}>Изменение цены за 24 часа в %</th>
+                                <th className={'align-middle'}>Возможность добавить в портфел</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {data.data.map(coinData => (
+                                <CoinItem
+                                    key={coinData.id}
+                                    data={coinData}
+                                />
+                            ))}
+                            </tbody>
+                        </Table>
+                    </Row>
+                </Container>
             ) : null
 
             }
