@@ -1,25 +1,21 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {useGetAllCoinsQuery} from "../redux/query/CoinQuery";
+import {CoinDataResponse, useGetAllCoinsQuery} from "../redux/query/CoinQuery";
 import {Container, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 import {useDispatch} from "react-redux";
 import {SET_ALL_COINS} from "../redux/slice/CoinSlice";
 import SortForm from "./SortForm/SortForm";
+import SortBy from "../utils/SortBy";
 
 
 const CoinsTable = () => {
     const [items, setItems] = useState(25);
-    const [sort , setSort] = useState('');
+    const [dataSort, setDataSort] = useState<null | CoinDataResponse>();
     const dispatch = useDispatch();
-
     const {data, isLoading, error} = useGetAllCoinsQuery(items);
+    const [sort, setSort] = useState('1');
 
-    // const scrollHandler = () => {
-    //     if (document.documentElement.scrollHeight - (document.documentElement.scrollTop + window.innerHeight) < 100) {
-    //         setItems(items + 1);
-    //     }
-    // }
     const scrollHandler = useCallback(() => {
         if (document.documentElement.scrollHeight - (document.documentElement.scrollTop + window.innerHeight) < 100) {
             setItems((prevItems) => prevItems + 1);
@@ -31,12 +27,25 @@ const CoinsTable = () => {
         if (!isLoading) {
             document.addEventListener('scroll', scrollHandler);
             dispatch(SET_ALL_COINS(data!));
+            setDataSort(data);
             return function () {
                 document.removeEventListener('scroll', scrollHandler)
             }
         }
     }, [data, dispatch, isLoading, scrollHandler]);
 
+    useEffect(() => {
+        if (data && sort) {
+            sortData();
+        }
+    }, [sort, data]);
+
+    const sortData = (): void => {
+        if (data) {
+            const sortedData = SortBy(data, sort);
+            setDataSort(sortedData);
+        }
+    };
 
     return (
         <Container>
@@ -51,7 +60,7 @@ const CoinsTable = () => {
             ) : data ? (
                 <Container>
                     <Row>
-                        <SortForm setForm={setSort} sort={sort}/>
+                        <SortForm setSort={setSort}/>
                     </Row>
                     <Row>
                         <Table responsive style={{'textAlign': 'center'}}>
@@ -66,7 +75,13 @@ const CoinsTable = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {data.data.map(coinData => (
+                            {/*{data.data.map(coinData => (*/}
+                            {/*    <CoinItem*/}
+                            {/*        key={coinData.id}*/}
+                            {/*        data={coinData}*/}
+                            {/*    />*/}
+                            {/*))}*/}
+                            {dataSort?.data.map(coinData => (
                                 <CoinItem
                                     key={coinData.id}
                                     data={coinData}

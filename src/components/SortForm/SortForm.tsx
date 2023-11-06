@@ -1,10 +1,14 @@
 import React from 'react';
 import {Form} from "react-bootstrap";
 
-const SortForm = (setSort:  React.Dispatch<React.SetStateAction<string>>, sort : string) => {
+
+const SortForm = ({setSort}: { setSort: React.Dispatch<React.SetStateAction<string>> }) => {
 
     return (
-        <Form.Select>
+        <Form.Select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+            setSort(e.target.value);
+        }
+        }>
             <option>Сортировать по:</option>
             <option value="1">цене</option>
             <option value="2">рыночной капитализации</option>
