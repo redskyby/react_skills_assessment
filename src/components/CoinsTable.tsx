@@ -35,17 +35,24 @@ const CoinsTable = () => {
     }, [data, dispatch, isLoading, scrollHandler]);
 
     useEffect(() => {
+        const sortData = (): void => {
+            if (data) {
+                const sortedData = SortBy(data, sort);
+                setDataSort(sortedData);
+            }
+        };
+
         if (data && sort) {
             sortData();
         }
     }, [sort, data]);
 
-    const sortData = (): void => {
-        if (data) {
-            const sortedData = SortBy(data, sort);
-            setDataSort(sortedData);
-        }
-    };
+    // const sortData = (): void => {
+    //     if (data) {
+    //         const sortedData = SortBy(data, sort);
+    //         setDataSort(sortedData);
+    //     }
+    // };
 
     return (
         <Container>
