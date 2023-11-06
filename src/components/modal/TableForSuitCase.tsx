@@ -11,22 +11,32 @@ const TableForSuitCase = ({data}: { data: CoinData }) => {
 
     return (
         <tr>
-            <td>
+            <td className={'align-middle text-center'}>
                 <Image src={icon}/>
             </td>
-            <td>
+            <td className={'align-middle text-center'}>
+                {data.id}
+            </td>
+            <td className={'align-middle text-center'}>
                 {data.symbol}
             </td>
-            <td>
+            <td className={'align-middle text-center'}>
+                {data.rank}
+            </td>
+            <td className={'align-middle text-center'}>
+                {secondNumberAfterDot(data.supply)}
+            </td>
+            <td className={'align-middle text-center'}>
                 {secondNumberAfterDot(data.priceUsd)}
             </td>
-            <td>
+            <td className={'align-middle text-center'}>
                 {secondNumberAfterDot(data.marketCapUsd)}
             </td>
-            <td>
-                {secondNumberAfterDot(data.marketCapUsd)}
+            <td className={'align-middle text-center'}>
+                {secondNumberAfterDot(data.maxSupply)}
             </td>
-            <td>
+
+            <td className={'align-middle text-center'}>
                 <Button
                     type={'button'}
                     onClick={()=> dispatch(REMOVE_ONE_COIN_FROM_SUIT(data))}

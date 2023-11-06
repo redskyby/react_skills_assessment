@@ -19,11 +19,14 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
                         <thead>
                         <tr>
                             <th className={'align-middle text-center'}>Иконка</th>
+                            <th className={'align-middle text-center'}>Название монеты</th>
                             <th className={'align-middle text-center'}>Символ</th>
+                            <th className={'align-middle text-center'}>rank</th>
+                            <th className={'align-middle text-center'}>supply</th>
                             <th className={'align-middle text-center'}>Цена в USD</th>
                             <th className={'align-middle text-center'}>Рыночная капитализация в USD</th>
-                            <th className={'align-middle text-center'}>Возможность добавить в портфель</th>
-                            <th className={'align-middle text-center'}>Возможность добавить в портфел</th>
+                            <th className={'align-middle text-center'}>maxSupply</th>
+                            <th className={'align-middle text-center'}>Возможность удалить из портфеля</th>
                         </tr>
                         </thead>
                         <tbody>
