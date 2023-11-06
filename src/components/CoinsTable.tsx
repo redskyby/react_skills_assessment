@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {CoinDataResponse, useGetAllCoinsQuery} from "../redux/query/CoinQuery";
-import {Container, Row, Table} from "react-bootstrap";
+import {Col, Container, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import CoinItem from "./CoinItem";
 import {useDispatch} from "react-redux";
@@ -65,9 +65,11 @@ const CoinsTable = () => {
                     <RingLoader color={'#36d7b7'} size={'100px'}/>
                 </Row>
             ) : data ? (
-                <Container>
+                <>
                     <Row>
-                        <SortForm setSort={setSort}/>
+                        <Col md={3}>
+                            <SortForm setSort={setSort}/>
+                        </Col>
                     </Row>
                     <Row>
                         <Table responsive style={{'textAlign': 'center'}}>
@@ -97,7 +99,7 @@ const CoinsTable = () => {
                             </tbody>
                         </Table>
                     </Row>
-                </Container>
+                </>
             ) : null
 
             }
