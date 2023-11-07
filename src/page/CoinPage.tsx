@@ -86,7 +86,6 @@ const CoinPage = () => {
                     </Row>
                 </Container>
             ) : null
-
             }
         </Container>
     );

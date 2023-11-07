@@ -7,15 +7,18 @@ import secondNumberAfterDot from "../../utils/secondNumberAfterDot";
 
 const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const coins = useSelector((state: RootState) => state.isSuitCaseToolkit.coins);
-    const [totalCount , setTotalCount] = useState<string>('0');
+    const [totalCount, setTotalCount] = useState<string>('0');
 
 
     useEffect(() => {
         if (coins.length !== 0) {
             let total = coins.reduce((a, b) => a + parseFloat(b.priceUsd), 0);
-            setTotalCount(secondNumberAfterDot(total.toString()));
+            let totalWith2Number: string = secondNumberAfterDot(total.toString());
+            setTotalCount(totalWith2Number);
+            localStorage.setItem('total', totalWith2Number);
         } else {
             setTotalCount('0');
+            localStorage.setItem('total', '0');
         }
 
     }, [coins])
@@ -53,7 +56,7 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
                 }
             </Modal.Body>
             <Modal.Footer className={'d-flex flex-row  justify-content-between'}>
-                 <p>Общая сумма : {totalCount}$</p>
+                <p>Общая сумма : {totalCount}$</p>
                 <Button variant="secondary" onClick={() => setShow(false)}>
                     Close
                 </Button>
