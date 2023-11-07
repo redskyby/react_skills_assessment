@@ -1,15 +1,24 @@
 import React from 'react';
 import {NavLink, useParams} from "react-router-dom";
-import {useGetOneCoinQuery} from "../redux/query/CoinQuery";
-import {Container, Image, Row, Table} from "react-bootstrap";
+import {useGetOneCoinQuery, CoinOne} from "../redux/query/CoinQuery";
+import {Button, Container, Image, Row, Table} from "react-bootstrap";
 import {RingLoader} from "react-spinners";
 import secondNumberAfterDot from "../utils/secondNumberAfterDot";
 import icon from "../utils/imgIcon/favicon.png";
 import {SHOP_ROUTE} from "../utils/route_path";
+import {ADD_IN_ONE_SUIT} from "../redux/slice/SuitCaseSlice";
+import {useDispatch} from "react-redux";
 
 const CoinPage = () => {
     const {id} = useParams<string>();
     const {data, isLoading, error} = useGetOneCoinQuery(id!);
+    const dispatch = useDispatch();
+
+    function addInSuitCase(e: React.MouseEvent, data: CoinOne) {
+        e.stopPropagation();
+        dispatch(ADD_IN_ONE_SUIT(data?.data));
+    }
+
 
     return (
         <Container>
@@ -39,29 +48,35 @@ const CoinPage = () => {
                         </thead>
                         <tbody>
                         <tr>
-                            <td>
+                            <td className={'align-middle'}>
                                 <Image src={icon}/>
                             </td>
-                            <td>
+                            <td className={'align-middle'}>
                                 {data.data.id}
                             </td>
-                            <td>
+                            <td className={'align-middle'}>
                                 {data.data.symbol}
                             </td>
-                            <td>
+                            <td className={'align-middle'}>
                                 {data.data.rank}
                             </td>
-                            <td>
+                            <td className={'align-middle'}>
                                 {secondNumberAfterDot(data.data.supply)}
                             </td>
-                            <td>
+                            <td className={'align-middle'}>
                                 {secondNumberAfterDot(data.data.priceUsd)}
                             </td>
-                            <td>
+                            <td className={'align-middle'}>
                                 {secondNumberAfterDot(data.data.marketCapUsd)}
                             </td>
-                            <td>
+                            <td className={'align-middle'}>
                                 {secondNumberAfterDot(data.data.maxSupply)}
+                            </td>
+                            <td className={'align-middle'}>
+                                <Button
+                                    type={'button'}
+                                    onClick={e => addInSuitCase(e, data)}
+                                >Добавить в портфель</Button>
                             </td>
                         </tr>
                         </tbody>

@@ -1,25 +1,25 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
 export interface CoinData {
-        id: string;
-        rank: string;
-        symbol: string;
-        name: string;
-        supply: string;
-        maxSupply: string;
-        marketCapUsd: string;
-        volumeUsd24Hr: string;
-        priceUsd: string;
-        changePercent24Hr: string;
-        vwap24Hr: string;
+    id: string;
+    rank: string;
+    symbol: string;
+    name: string;
+    supply: string;
+    maxSupply: string;
+    marketCapUsd: string;
+    volumeUsd24Hr: string;
+    priceUsd: string;
+    changePercent24Hr: string;
+    vwap24Hr: string;
 }
 
 export interface CoinDataResponse {
     data: CoinData[];
 }
 
-interface  CoinOne{
-    data : CoinData;
+export interface CoinOne {
+    data: CoinData;
 }
 
 export const coinQueryApi = createApi({
