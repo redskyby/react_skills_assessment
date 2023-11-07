@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Modal, Table} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import TableForSuitCase from "./TableForSuitCase";
+import secondNumberAfterDot from "../../utils/secondNumberAfterDot";
 
 const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const coins = useSelector((state: RootState) => state.isSuitCaseToolkit.coins);
+    const [totalCount , setTotalCount] = useState<string>('0');
+
+
+    useEffect(() => {
+        if (coins.length !== 0) {
+            let total = coins.reduce((a, b) => a + parseFloat(b.priceUsd), 0);
+            setTotalCount(secondNumberAfterDot(total.toString()));
+        } else {
+            setTotalCount('0');
+        }
+
+    }, [coins])
+
 
     return (
         <Modal show={show} onHide={() => setShow(false)} size={"xl"}>
@@ -38,7 +52,8 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
                     </Table>
                 }
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className={'d-flex flex-row  justify-content-between'}>
+                 <p>Общая сумма : {totalCount}$</p>
                 <Button variant="secondary" onClick={() => setShow(false)}>
                     Close
                 </Button>
