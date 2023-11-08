@@ -12,8 +12,8 @@ const Suitcase = ({show, setShow}: { show: boolean, setShow: React.Dispatch<Reac
 
     useEffect(() => {
         if (coins.length !== 0) {
-            let total = coins.reduce((a, b) => a + parseFloat(b.priceUsd), 0);
-            let totalWith2Number: string = secondNumberAfterDot(total.toString());
+            const total = coins.reduce((a, b) => a + parseFloat(b.priceUsd), 0);
+            const totalWith2Number: string = secondNumberAfterDot(total.toString());
             setTotalCount(totalWith2Number);
             localStorage.setItem('total', totalWith2Number);
         } else {
