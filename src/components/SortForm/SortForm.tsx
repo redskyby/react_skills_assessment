@@ -1,9 +1,7 @@
 import React from 'react';
-import {Form} from "react-bootstrap";
+import { Form } from 'react-bootstrap';
 
-
-const SortForm = ({setSort}: { setSort: React.Dispatch<React.SetStateAction<string>> }) => {
-
+const SortForm = ({ setSort }: { setSort: React.Dispatch<React.SetStateAction<string>> }) => {
     return (
         <Form.Select
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {

@@ -1,12 +1,11 @@
 import React from 'react';
-import {Image, Button} from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
-import {COIN_ROUTE} from "../utils/route_path";
-import secondNumberAfterDot from "../utils/secondNumberAfterDot";
-import icon from "../utils/imgIcon/favicon.png";
-import {useDispatch} from "react-redux";
-import {ADD_IN_ONE_SUIT} from "../redux/slice/SuitCaseSlice";
-
+import { Image, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { COIN_ROUTE } from '../utils/route_path';
+import secondNumberAfterDot from '../utils/secondNumberAfterDot';
+import icon from '../utils/imgIcon/favicon.png';
+import { useDispatch } from 'react-redux';
+import { ADD_IN_ONE_SUIT } from '../redux/slice/SuitCaseSlice';
 
 interface CoinData {
     id: string;
@@ -22,11 +21,9 @@ interface CoinData {
     vwap24Hr: string;
 }
 
-
-const CoinItem = ({data}: { data: CoinData }) => {
+const CoinItem = ({ data }: { data: CoinData }) => {
     const history = useNavigate();
     const dispatch = useDispatch();
-
 
     function showPageOfCoin(e: React.MouseEvent, id: string): void {
         e.preventDefault();
@@ -39,30 +36,20 @@ const CoinItem = ({data}: { data: CoinData }) => {
     }
 
     return (
-        <tr onClick={e => showPageOfCoin(e, data.id)}>
+        <tr onClick={(e) => showPageOfCoin(e, data.id)}>
             <td className={'align-middle'}>
-                <Image src={icon}/>
+                <Image src={icon} />
             </td>
+            <td className={'align-middle'}>{data.symbol}</td>
+            <td className={'align-middle'}>{secondNumberAfterDot(data.priceUsd)}</td>
+            <td className={'align-middle'}>{secondNumberAfterDot(data.marketCapUsd)}</td>
+            <td className={'align-middle'}>{secondNumberAfterDot(data.changePercent24Hr)}</td>
             <td className={'align-middle'}>
-                {data.symbol}
-            </td>
-            <td className={'align-middle'}>
-                {secondNumberAfterDot(data.priceUsd)}
-            </td>
-            <td className={'align-middle'}>
-                {secondNumberAfterDot(data.marketCapUsd)}
-            </td>
-            <td className={'align-middle'}>
-                {secondNumberAfterDot(data.changePercent24Hr)}
-            </td>
-            <td className={'align-middle'}>
-                <Button
-                    type={'button'}
-                    onClick={e => addInSuitCase(e, data)}
-                >Добавить в портфель</Button>
+                <Button type={'button'} onClick={(e) => addInSuitCase(e, data)}>
+                    Добавить в портфель
+                </Button>
             </td>
         </tr>
-
     );
 };
 

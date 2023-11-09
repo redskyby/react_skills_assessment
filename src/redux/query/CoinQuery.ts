@@ -1,4 +1,4 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export interface CoinData {
     id: string;
@@ -24,15 +24,15 @@ export interface CoinOne {
 
 export const coinQueryApi = createApi({
     reducerPath: 'coinQueryApi',
-    baseQuery: fetchBaseQuery({baseUrl: "https://api.coincap.io/v2"}),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://api.coincap.io/v2' }),
     endpoints: (build) => ({
         getAllCoins: build.query<CoinDataResponse, number>({
-            query: (items) => `/assets/?limit=${items}`
+            query: (items) => `/assets/?limit=${items}`,
         }),
         getOneCoin: build.query<CoinOne, string>({
-            query: (name) => `/assets/${name}`
-        })
-    })
+            query: (name) => `/assets/${name}`,
+        }),
+    }),
 });
 
-export const {useGetAllCoinsQuery, useGetOneCoinQuery} = coinQueryApi;
+export const { useGetAllCoinsQuery, useGetOneCoinQuery } = coinQueryApi;

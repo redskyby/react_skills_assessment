@@ -1,35 +1,35 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true
+    env: {
+        browser: true,
+        es2021: true,
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
-    ],
-    "overrides": [
+    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'prettier'],
+    overrides: [
         {
-            "env": {
-                "node": true
+            env: {
+                node: true,
             },
-            "files": [
-                ".eslintrc.{js,cjs}"
-            ],
-            "parserOptions": {
-                "sourceType": "script"
-            }
-        }
+            files: ['.eslintrc.{js,cjs}'],
+            parserOptions: {
+                sourceType: 'script',
+            },
+        },
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+            jsx: true,
+        },
     },
-    "plugins": [
-        "@typescript-eslint",
-        "react"
-    ],
-    "rules": {
-    }
-}
+    plugins: ['@typescript-eslint', 'react', 'prettier'],
+    rules: {
+        'prettier/prettier': ['error', { semi: true }],
+    },
+    settings: {
+        react: {
+            version: 'detect',
+        },
+    },
+};
