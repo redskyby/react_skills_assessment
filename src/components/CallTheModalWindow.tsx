@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Suitcase from './modal/Suitcase';
+import Suitcase from './Modal/Suitcase';
 import { Button } from 'react-bootstrap';
 
 const CallTheModalWindow = () => {
