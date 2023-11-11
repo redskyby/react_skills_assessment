@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
+import { RootState } from '../redux/Store';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { CoinData } from '../redux/query/CoinQuery';
-import secondNumberAfterDot from '../utils/secondNumberAfterDot';
+import SecondNumberAfterDot from '../utils/SecondNumberAfterDot';
 
 const ThirdTheMostPopularCoins = () => {
     const coins = useSelector((state: RootState) => state.isCoinToolkit.coins);
@@ -17,7 +17,7 @@ const ThirdTheMostPopularCoins = () => {
         <ListGroup>
             {firstThreeCoins?.map((item) => (
                 <ListGroupItem key={item.id}>
-                    {item.name} имеет цену: {secondNumberAfterDot(item.priceUsd)}$
+                    {item.name} имеет цену: {SecondNumberAfterDot(item.priceUsd)}$
                 </ListGroupItem>
             ))}
         </ListGroup>

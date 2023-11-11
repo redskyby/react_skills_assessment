@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Image } from 'react-bootstrap';
 import icon from '../../utils/imgIcon/favicon.png';
-import secondNumberAfterDot from '../../utils/secondNumberAfterDot';
+import secondNumberAfterDot from '../../utils/SecondNumberAfterDot';
 import { CoinData } from '../../redux/query/CoinQuery';
 import { useDispatch } from 'react-redux';
 import { REMOVE_ONE_COIN_FROM_SUIT } from '../../redux/slice/SuitCaseSlice';

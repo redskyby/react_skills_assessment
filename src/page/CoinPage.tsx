@@ -3,9 +3,9 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useGetOneCoinQuery, CoinOne } from '../redux/query/CoinQuery';
 import { Button, Container, Image, Row, Table } from 'react-bootstrap';
 import { RingLoader } from 'react-spinners';
-import secondNumberAfterDot from '../utils/secondNumberAfterDot';
+import secondNumberAfterDot from '../utils/SecondNumberAfterDot';
 import icon from '../utils/imgIcon/favicon.png';
-import { SHOP_ROUTE } from '../utils/route_path';
+import { SHOP_ROUTE } from '../utils/RoutePath';
 import { ADD_IN_ONE_SUIT } from '../redux/slice/SuitCaseSlice';
 import { useDispatch } from 'react-redux';
 

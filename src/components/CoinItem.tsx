@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { COIN_ROUTE } from '../utils/route_path';
-import secondNumberAfterDot from '../utils/secondNumberAfterDot';
+import { COIN_ROUTE } from '../utils/RoutePath';
+import secondNumberAfterDot from '../utils/SecondNumberAfterDot';
 import icon from '../utils/imgIcon/favicon.png';
 import { useDispatch } from 'react-redux';
 import { ADD_IN_ONE_SUIT } from '../redux/slice/SuitCaseSlice';

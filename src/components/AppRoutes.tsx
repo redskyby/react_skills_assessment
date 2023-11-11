@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { COIN_ROUTE, SHOP_ROUTE } from '../utils/route_path';
+import { COIN_ROUTE, SHOP_ROUTE } from '../utils/RoutePath';
 import CoinsTable from './CoinsTable';
 import CoinPage from '../page/CoinPage';
 

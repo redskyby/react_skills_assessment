@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { RootState } from '../../redux/Store';
 import TableForSuitCase from './TableForSuitCase';
-import secondNumberAfterDot from '../../utils/secondNumberAfterDot';
+import secondNumberAfterDot from '../../utils/SecondNumberAfterDot';
 
 const Suitcase = ({ show, setShow }: { show: boolean; setShow: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const coins = useSelector((state: RootState) => state.isSuitCaseToolkit.coins);
