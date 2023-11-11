@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 // import { RootState } from '../../redux/Store';
 // // import { COIN_ROUTE } from '../../utils/RoutePath';
 import style from './SearchForm.module.scss';
-import searchIcon from '../../utils/imgIcon/searchIcon.svg';
+// import searchIcon from '../../utils/imgIcon/searchIcon.svg';
+import favicon from '../../utils/imgIcon/searchIcon.svg';
 
 const SearchForm = () => {
     // const history = useNavigate();
@@ -74,7 +75,7 @@ const SearchForm = () => {
                     onChange={(e) => setCoin(e.target.value)}
                 />
                 <button className={style.button} type={'submit'}>
-                    {searchIcon}
+                    <img src={favicon} alt="favicon" />
                 </button>
             </form>
         </div>
