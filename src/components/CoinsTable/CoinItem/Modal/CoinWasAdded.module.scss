@@ -1,0 +1,23 @@
+.show {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  height: auto;
+  padding: 0.5rem 0.5rem;
+  width: auto;
+  text-align: center;
+  background-color: #ffff;
+  border: 1px solid #ccc;
+  transition: transform 0.5s ease-in-out;
+
+  &.hidden {
+    transform: translateY(100%);
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}

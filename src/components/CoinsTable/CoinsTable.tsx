@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { CoinDataResponse, useGetAllCoinsQuery } from '../redux/query/CoinQuery';
+import { CoinDataResponse, useGetAllCoinsQuery } from '../../redux/query/CoinQuery';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { RingLoader } from 'react-spinners';
-import CoinItem from './CoinItem';
+import CoinItem from './CoinItem/CoinItem';
 import { useDispatch } from 'react-redux';
-import { SET_ALL_COINS } from '../redux/slice/CoinSlice';
-import SortForm from './SortForm/SortForm';
-import SortBy from '../utils/SortBy';
+import { SET_ALL_COINS } from '../../redux/slice/CoinSlice';
+import SortForm from '../SortForm/SortForm';
+import SortBy from '../../utils/SortBy';
 
 const CoinsTable = () => {
     const [items, setItems] = useState(25);
