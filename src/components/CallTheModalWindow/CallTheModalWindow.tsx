@@ -3,7 +3,7 @@ import Suitcase from './Modal/Suitcase';
 import style from './CallTheModalWindow.module.scss';
 
 const CallTheModalWindow = () => {
-    const [show, setShow] = useState<boolean>(true);
+    const [show, setShow] = useState<boolean>(false);
 
     return (
         <div className={style.modal}>

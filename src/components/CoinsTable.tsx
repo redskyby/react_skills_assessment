@@ -45,13 +45,6 @@ const CoinsTable = () => {
         }
     }, [sort, data]);
 
-    // const sortData = (): void => {
-    //     if (data) {
-    //         const sortedData = SortBy(data, sort);
-    //         setDataSort(sortedData);
-    //     }
-    // };
-
     return (
         <Container>
             {error ? (
