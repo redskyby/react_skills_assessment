@@ -1,0 +1,16 @@
+.modal{
+  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  &_button{
+    background-color: #0d6efd;;
+    color: #fff;
+    border: none;
+    padding: .5rem .5rem;
+    transition: background-color 0.3s ease;
+    &:hover{
+      background-color: #0957ca;
+    }
+  }
+}

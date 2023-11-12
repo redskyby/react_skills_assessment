@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import ThirdTheMostPopularCoins from '../ThirdTheMostPopularCoins';
-import CallTheModalWindow from '../CallTheModalWindow';
+import CallTheModalWindow from '../CallTheModalWindow/CallTheModalWindow';
 import style from './NavBar.module.scss';
 
 const NavBar = () => {
