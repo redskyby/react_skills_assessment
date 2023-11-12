@@ -67,16 +67,18 @@ const SearchForm = () => {
             {/*</Form>*/}
             <form onFocus={handleFormFocus} onBlur={handleFormBlur} className={style.form}>
                 <label htmlFor={'input_search'}>Поиск монеты по названию:</label>
-                <input
-                    className={style.input_search}
-                    type="text"
-                    placeholder={'Введите название'}
-                    value={coin}
-                    onChange={(e) => setCoin(e.target.value)}
-                />
-                <button className={style.button} type={'submit'}>
-                    <img src={favicon} alt="favicon" />
-                </button>
+                <div className={style.form_input_button}>
+                    <input
+                        className={style.input_search}
+                        type="text"
+                        placeholder={'Введите название'}
+                        value={coin}
+                        onChange={(e) => setCoin(e.target.value)}
+                    />
+                    <button className={style.button} type={'submit'}>
+                        <img src={favicon} alt="favicon" />
+                    </button>
+                </div>
             </form>
         </div>
     );
