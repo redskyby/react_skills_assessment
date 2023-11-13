@@ -1,5 +1,5 @@
 import React from 'react';
-// import style from './SortForm.module.scss';
+import style from './SortForm.module.scss';
 
 const SortForm = ({ setSort }: { setSort: React.Dispatch<React.SetStateAction<string>> }) => {
     return (
@@ -14,7 +14,7 @@ const SortForm = ({ setSort }: { setSort: React.Dispatch<React.SetStateAction<st
         //     <option value="2">рыночной капитализации</option>
         //     <option value="3">изменению за 24ч</option>
         // </Form.Select>
-        <form>
+        <form className={style.sort}>
             <select
                 name="sort"
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
