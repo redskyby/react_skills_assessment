@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { CoinDataResponse, useGetAllCoinsQuery } from '../../redux/query/CoinQuery';
-import { Col, Container, Row, Table } from 'react-bootstrap';
 import { RingLoader } from 'react-spinners';
 import CoinItem from './CoinItem/CoinItem';
 import { useDispatch } from 'react-redux';
 import { SET_ALL_COINS } from '../../redux/slice/CoinSlice';
 import SortForm from '../SortForm/SortForm';
 import SortBy from '../../utils/SortBy';
+import style from './CoinsTable.module.scss';
 
 const CoinsTable = () => {
     const [items, setItems] = useState(25);
@@ -46,48 +46,44 @@ const CoinsTable = () => {
     }, [sort, data]);
 
     return (
-        <Container>
+        <div className={style.container}>
             {error ? (
-                <Row className={'text-center'}>
+                <div className={style.error}>
                     <h1>Ошибка при загрузке данных, проверьте сетевое соединение.</h1>
-                </Row>
+                </div>
             ) : isLoading ? (
-                <Row className={'d-flex justify-content-center align-items-center'} style={{ height: '100vh' }}>
+                <div className={style.loader}>
                     <RingLoader color={'#36d7b7'} size={'100px'} />
-                </Row>
+                </div>
             ) : data ? (
-                <>
-                    <Row>
-                        <Col md={3}>
-                            <SortForm setSort={setSort} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Table responsive style={{ textAlign: 'center' }}>
-                            <thead>
-                                <tr>
-                                    <th className={'align-middle'}>Иконка</th>
-                                    <th className={'align-middle'}>Символ</th>
-                                    <th className={'align-middle'}>Цена в USD</th>
-                                    <th className={'align-middle'}>Рыночная капитализация в USD</th>
-                                    <th className={'align-middle'}>Изменение цены за 24 часа в %</th>
-                                    <th className={'align-middle'}>Возможность добавить в портфел</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/*{data.data.map(coinData => (*/}
-                                {/*    <CoinItem*/}
-                                {/*        key={coinData.id}*/}
-                                {/*        data={coinData}*/}
-                                {/*    />*/}
-                                {/*))}*/}
-                                {dataSort?.data.map((coinData) => <CoinItem key={coinData.id} data={coinData} />)}
-                            </tbody>
-                        </Table>
-                    </Row>
-                </>
+                <div className={style.main_page}>
+                    <div className={style.main_page_sort_form}>
+                        <SortForm setSort={setSort} />
+                    </div>
+                    <table className={style.main_page_table}>
+                        <thead>
+                            <tr>
+                                <th>Иконка</th>
+                                <th>Символ</th>
+                                <th>Цена в USD</th>
+                                <th>Рыночная капитализация в USD</th>
+                                <th>Изменение цены за 24 часа в %</th>
+                                <th>Возможность добавить в портфел</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/*{data.data.map(coinData => (*/}
+                            {/*    <CoinItem*/}
+                            {/*        key={coinData.id}*/}
+                            {/*        data={coinData}*/}
+                            {/*    />*/}
+                            {/*))}*/}
+                            {dataSort?.data.map((coinData) => <CoinItem key={coinData.id} data={coinData} />)}
+                        </tbody>
+                    </table>
+                </div>
             ) : null}
-        </Container>
+        </div>
     );
 };
 

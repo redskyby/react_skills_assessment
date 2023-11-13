@@ -1,0 +1,41 @@
+@import "../../utils/Variables";
+
+.container {
+  max-width: $tablet-max;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.error {
+  padding: 0.5rem 0.5rem;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.main_page {
+  display: flex;
+  flex-direction: column;
+
+  &_sort_form {
+    display: flex;
+    justify-content: flex-start;
+    margin: 15px 0;
+  }
+  &_table{
+    overflow: auto;
+    th{
+      text-align: center;
+      vertical-align: center;
+      padding: 0.5rem 0.5rem;
+    }
+  }
+}
