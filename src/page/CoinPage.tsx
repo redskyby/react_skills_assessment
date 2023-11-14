@@ -8,6 +8,8 @@ import icon from '../utils/imgIcon/favicon.png';
 import { SHOP_ROUTE } from '../utils/RoutePath';
 import { ADD_IN_ONE_SUIT } from '../redux/slice/SuitCaseSlice';
 import { useDispatch } from 'react-redux';
+import CoinWasAdded from '../components/CoinsTable/CoinItem/Modal/CoinWasAdded';
+import { SET_SHOW } from '../redux/slice/CoinWasAddedSlice';
 
 const CoinPage = () => {
     const { id } = useParams<string>();
@@ -17,6 +19,7 @@ const CoinPage = () => {
     function addInSuitCase(e: React.MouseEvent, data: CoinOne) {
         e.stopPropagation();
         dispatch(ADD_IN_ONE_SUIT(data?.data));
+        dispatch(SET_SHOW(true));
     }
 
     return (
@@ -70,6 +73,7 @@ const CoinPage = () => {
                     <Row>
                         <NavLink to={SHOP_ROUTE}>Вернуться на главную страницу</NavLink>
                     </Row>
+                    <CoinWasAdded />
                 </Container>
             ) : null}
         </Container>

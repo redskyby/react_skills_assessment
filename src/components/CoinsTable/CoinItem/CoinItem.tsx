@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { COIN_ROUTE } from '../../../utils/RoutePath';
 import secondNumberAfterDot from '../../../utils/SecondNumberAfterDot';
 import icon from '../../../utils/imgIcon/favicon.png';
 import { useDispatch } from 'react-redux';
 import { ADD_IN_ONE_SUIT } from '../../../redux/slice/SuitCaseSlice';
-import CoinWasAdded from './Modal/CoinWasAdded';
 import style from './CoinItem.module.scss';
+import { SET_SHOW } from '../../../redux/slice/CoinWasAddedSlice';
 
 interface CoinData {
     id: string;
@@ -25,7 +25,6 @@ interface CoinData {
 const CoinItem = ({ data }: { data: CoinData }) => {
     const history = useNavigate();
     const dispatch = useDispatch();
-    const [isVisible, setIsVisible] = useState(false);
 
     function showPageOfCoin(e: React.MouseEvent, id: string): void {
         e.preventDefault();
@@ -35,7 +34,7 @@ const CoinItem = ({ data }: { data: CoinData }) => {
     function addInSuitCase(e: React.MouseEvent, data: CoinData) {
         e.stopPropagation();
         dispatch(ADD_IN_ONE_SUIT(data));
-        setIsVisible(true);
+        dispatch(SET_SHOW(true));
     }
 
     return (
@@ -52,8 +51,6 @@ const CoinItem = ({ data }: { data: CoinData }) => {
                     Добавить в портфель
                 </button>
             </td>
-
-            {isVisible && <CoinWasAdded isVisible={isVisible} setIsVisible={setIsVisible} />}
         </tr>
     );
 };

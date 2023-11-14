@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
 import style from './CoinWasAdded.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../../redux/Store';
+import { SET_SHOW } from '../../../../redux/slice/CoinWasAddedSlice';
 
-const CoinWasAdded = ({
-    isVisible,
-    setIsVisible,
-}: {
-    isVisible: boolean;
-    setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+const CoinWasAdded = () => {
+    const show: boolean = useSelector((state: RootState) => state.isCoinWasAddedToolkit.show);
+    const dispatch = useDispatch();
     useEffect(() => {
         const timer = setTimeout(() => {
-            setIsVisible(false);
+            dispatch(SET_SHOW(false));
         }, 2000);
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [show]);
 
     return (
-        <div className={isVisible ? style.show : style.hidden}>
+        <div className={show ? style.show : style.hidden}>
             <p>Монета добавлена в портфель!</p>
         </div>
     );

@@ -10,14 +10,14 @@
     text-align: center;
     background-color: #ffff;
     border: 1px solid #ccc;
-    transition: transform 0.5s ease-in-out;
-
-    &.hidden {
-        transform: translateY(100%);
-    }
-
+    transform: translateY(-100%);
+    transition: display 0.5s ease-in-out;
     p {
         padding: 0;
         margin: 0;
     }
+}
+
+.hidden {
+    display: none;
 }

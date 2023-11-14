@@ -1,20 +1,20 @@
-.text_align_center{
-  text-align: center;
-  vertical-align: center;
-  img{
-    width: 16px;
-    height: 16px;
-  }
+.text_align_center {
+    text-align: center;
+    vertical-align: center;
+    img {
+        width: 16px;
+        height: 16px;
+    }
 }
 
-.button{
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 0.5rem;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #0957ca;
-  }
+.button {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 0.5rem;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: #0957ca;
+    }
 }

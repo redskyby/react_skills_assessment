@@ -7,6 +7,7 @@ import { SET_ALL_COINS } from '../../redux/slice/CoinSlice';
 import SortForm from '../SortForm/SortForm';
 import SortBy from '../../utils/SortBy';
 import style from './CoinsTable.module.scss';
+import CoinWasAdded from './CoinItem/Modal/CoinWasAdded';
 
 const CoinsTable = () => {
     const [items, setItems] = useState(25);
@@ -81,6 +82,7 @@ const CoinsTable = () => {
                             {dataSort?.data.map((coinData) => <CoinItem key={coinData.id} data={coinData} />)}
                         </tbody>
                     </table>
+                    <CoinWasAdded />
                 </div>
             ) : null}
         </div>
