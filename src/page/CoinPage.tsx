@@ -10,6 +10,7 @@ import { ADD_IN_ONE_SUIT } from '../redux/slice/SuitCaseSlice';
 import { useDispatch } from 'react-redux';
 import CoinWasAdded from '../components/CoinsTable/CoinItem/Modal/CoinWasAdded';
 import { SET_SHOW } from '../redux/slice/CoinWasAddedSlice';
+import style from './CoinPage.module.scss';
 
 const CoinPage = () => {
     const { id } = useParams<string>();
