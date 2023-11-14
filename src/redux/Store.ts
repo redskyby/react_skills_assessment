@@ -3,10 +3,12 @@ import { coinQueryApi } from './query/CoinQuery';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import coins from './slice/CoinSlice';
 import suitCase from './slice/SuitCaseSlice';
+import coinWasAdded from './slice/CoinWasAddedSlice';
 
 const rootReducer = combineReducers({
     isCoinToolkit: coins,
     isSuitCaseToolkit: suitCase,
+    isCoinWasAddedToolkit: coinWasAdded,
     [coinQueryApi.reducerPath]: coinQueryApi.reducer,
 });
 
