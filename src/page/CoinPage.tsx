@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useGetOneCoinQuery, CoinOne } from '../redux/query/CoinQuery';
-import { Button, Container, Image, Row, Table } from 'react-bootstrap';
+import { Button, Container, Image, Row } from 'react-bootstrap';
 import { RingLoader } from 'react-spinners';
 import secondNumberAfterDot from '../utils/SecondNumberAfterDot';
 import icon from '../utils/imgIcon/favicon.png';
@@ -24,21 +24,21 @@ const CoinPage = () => {
     }
 
     return (
-        <Container>
+        <div className={style.container}>
             {error ? (
-                <Row className={'text-center'}>
-                    <h1>Ошибка при загрузке данных, проверите сетивое соединение</h1>
-                </Row>
+                <div className={style.error}>
+                    <h1>Ошибка при загрузке данных, проверьте сетевое соединение.</h1>
+                </div>
             ) : isLoading ? (
-                <Row className={'d-flex justify-content-center align-items-center'} style={{ height: '100vh' }}>
+                <div className={style.loader}>
                     <RingLoader color={'#36d7b7'} size={'100px'} />
-                </Row>
+                </div>
             ) : data ? (
                 <Container>
                     <Row className={'text-center'}>
                         <h1>{data.data.id}</h1>
                     </Row>
-                    <Table responsive style={{ textAlign: 'center' }}>
+                    <table>
                         <thead>
                             <tr>
                                 <th className={'align-middle'}>Изображение монеты</th>
@@ -70,14 +70,14 @@ const CoinPage = () => {
                                 </td>
                             </tr>
                         </tbody>
-                    </Table>
+                    </table>
                     <Row>
                         <NavLink to={SHOP_ROUTE}>Вернуться на главную страницу</NavLink>
                     </Row>
                     <CoinWasAdded />
                 </Container>
             ) : null}
-        </Container>
+        </div>
     );
 };
 
