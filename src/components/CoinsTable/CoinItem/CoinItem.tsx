@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Image, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { COIN_ROUTE } from '../../../utils/RoutePath';
 import secondNumberAfterDot from '../../../utils/SecondNumberAfterDot';
@@ -7,6 +6,7 @@ import icon from '../../../utils/imgIcon/favicon.png';
 import { useDispatch } from 'react-redux';
 import { ADD_IN_ONE_SUIT } from '../../../redux/slice/SuitCaseSlice';
 import CoinWasAdded from './Modal/CoinWasAdded';
+import style from './CoinItem.module.scss';
 
 interface CoinData {
     id: string;
@@ -40,17 +40,17 @@ const CoinItem = ({ data }: { data: CoinData }) => {
 
     return (
         <tr onClick={(e) => showPageOfCoin(e, data.id)}>
-            <td className={'align-middle'}>
-                <Image src={icon} />
+            <td className={style.text_align_center}>
+                <img src={icon} alt="Изображение монеты" />
             </td>
-            <td className={'align-middle'}>{data.symbol}</td>
-            <td className={'align-middle'}>{secondNumberAfterDot(data.priceUsd)}</td>
-            <td className={'align-middle'}>{secondNumberAfterDot(data.marketCapUsd)}</td>
-            <td className={'align-middle'}>{secondNumberAfterDot(data.changePercent24Hr)}</td>
-            <td className={'align-middle'}>
-                <Button type={'button'} onClick={(e) => addInSuitCase(e, data)}>
+            <td className={style.text_align_center}>{data.symbol}</td>
+            <td className={style.text_align_center}>{secondNumberAfterDot(data.priceUsd)}</td>
+            <td className={style.text_align_center}>{secondNumberAfterDot(data.marketCapUsd)}</td>
+            <td className={style.text_align_center}>{secondNumberAfterDot(data.changePercent24Hr)}</td>
+            <td className={style.text_align_center}>
+                <button className={style.button} type={'button'} onClick={(e) => addInSuitCase(e, data)}>
                     Добавить в портфель
-                </Button>
+                </button>
             </td>
 
             {isVisible && <CoinWasAdded isVisible={isVisible} setIsVisible={setIsVisible} />}
