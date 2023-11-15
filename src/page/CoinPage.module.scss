@@ -21,16 +21,16 @@
     width: 100%;
 }
 
-.page_of_coin{
+.page_of_coin {
     display: flex;
     flex-direction: column;
-    &_main_title{
+    &_main_title {
         text-align: center;
         margin: 15px 0;
     }
-    &_table{
+    &_table {
         overflow: auto;
-        &_text_center{
+        &_text_center {
             text-align: center;
             vertical-align: center;
         }
