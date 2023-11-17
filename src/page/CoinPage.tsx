@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import CoinWasAdded from '../components/CoinsTable/CoinItem/Modal/CoinWasAdded';
 import { SET_SHOW } from '../redux/slice/CoinWasAddedSlice';
 import style from './CoinPage.module.scss';
+import Chart from './Chart/Chart';
 
 const CoinPage = () => {
     const { id } = useParams<string>();
@@ -86,6 +87,7 @@ const CoinPage = () => {
                         <NavLink to={SHOP_ROUTE}>Вернуться на главную страницу</NavLink>
                     </div>
                     <CoinWasAdded />
+                    <Chart />
                 </div>
             ) : null}
         </div>
