@@ -12,6 +12,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import style from './Chart.module.scss';
 
 const Chart = ({ id, range }: { id: string; range: string }) => {
     const { data, isLoading, error } = useGetOneCoinHistoryQuery({ name: id!, range: range! });
@@ -53,11 +54,15 @@ const Chart = ({ id, range }: { id: string; range: string }) => {
     };
 
     return (
-        <div>
+        <div className={style.container}>
             {error ? (
-                <h1>Ошибка при загрузке данных, проверьте сетевое соединение.</h1>
+                <div className={style.error}>
+                    <h1>Ошибка при загрузке данных, проверьте сетевое соединение.</h1>
+                </div>
             ) : isLoading ? (
-                <RingLoader color={'#36d7b7'} size={'100px'} />
+                <div className={style.loader}>
+                    <RingLoader color={'#36d7b7'} size={'100px'} />
+                </div>
             ) : data ? (
                 <Line options={options} data={data1} />
             ) : null}
