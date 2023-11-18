@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/Store';
-import TableForSuitCase from './TableForSuitCase';
+import TableForSuitCase from './TableForSuitCase/TableForSuitCase';
 import secondNumberAfterDot from '../../../utils/SecondNumberAfterDot';
 import style from './Suitcase.module.scss';
 
