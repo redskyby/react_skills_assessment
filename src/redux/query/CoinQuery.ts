@@ -32,7 +32,10 @@ export const coinQueryApi = createApi({
         getOneCoin: build.query<CoinOne, string>({
             query: (name) => `/assets/${name}`,
         }),
+        getOneCoinHistory: build.query({
+            query: (name) => `/assets/${name}/history?interval=h1`,
+        }),
     }),
 });
 
-export const { useGetAllCoinsQuery, useGetOneCoinQuery } = coinQueryApi;
+export const { useGetAllCoinsQuery, useGetOneCoinQuery, useGetOneCoinHistoryQuery } = coinQueryApi;

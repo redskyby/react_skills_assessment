@@ -13,7 +13,7 @@ import style from './CoinPage.module.scss';
 import Chart from './Chart/Chart';
 
 const CoinPage = () => {
-    const { id } = useParams<string>();
+    const { id } = useParams<{ id: string }>() as { id: string };
     const { data, isLoading, error } = useGetOneCoinQuery(id!);
     const dispatch = useDispatch();
 
@@ -87,7 +87,7 @@ const CoinPage = () => {
                         <NavLink to={SHOP_ROUTE}>Вернуться на главную страницу</NavLink>
                     </div>
                     <CoinWasAdded />
-                    <Chart />
+                    <Chart id={id} />
                 </div>
             ) : null}
         </div>
