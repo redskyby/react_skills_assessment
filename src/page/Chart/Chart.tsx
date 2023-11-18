@@ -13,38 +13,34 @@ import {
     Legend,
 } from 'chart.js';
 
-const Chart = (id) => {
-    const { data, isLoading, error } = useGetOneCoinHistoryQuery(id.id);
+const Chart = ({ id, range }: { id: string; range: string }) => {
+    const { data, isLoading, error } = useGetOneCoinHistoryQuery({ name: id!, range: range! });
 
     ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-    let options;
+    let labels = ['for init'];
 
-    let labels;
+    let priseUsd: string[] = [];
 
-    let data1;
-    let priseUsd;
-
-    options = {
+    const options = {
         responsive: true,
         plugins: {
             legend: {
-                position: 'top',
+                position: 'top' as const,
             },
             title: {
                 display: true,
-                text: 'Chart.js Line Chart',
+                text: range === 'd1' ? 'График цены за день' : 'График цены за месяц',
             },
         },
     };
-    labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
     if (data !== undefined) {
-        labels = data.data.map((i) => new Date(i.time));
+        labels = data.data.map((i) => new Date(i.time).toISOString());
         priseUsd = data.data.map((i) => i.priceUsd);
     }
 
-    data1 = {
+    const data1 = {
         labels,
         datasets: [
             {

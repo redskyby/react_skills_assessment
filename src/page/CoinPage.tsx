@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useGetOneCoinQuery, CoinOne } from '../redux/query/CoinQuery';
 import { RingLoader } from 'react-spinners';
@@ -15,6 +15,7 @@ import Chart from './Chart/Chart';
 const CoinPage = () => {
     const { id } = useParams<{ id: string }>() as { id: string };
     const { data, isLoading, error } = useGetOneCoinQuery(id!);
+    const [range, setRange] = useState<string>('d1');
     const dispatch = useDispatch();
 
     function addInSuitCase(e: React.MouseEvent, data: CoinOne) {
@@ -83,11 +84,28 @@ const CoinPage = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <div>
-                        <NavLink to={SHOP_ROUTE}>Вернуться на главную страницу</NavLink>
+                    <div className={style.block_buttons}>
+                        <div className={style.block_buttons_left_block}>
+                            <p className={style.block_buttons_left_block_text}>Просмотреть график за :</p>
+                            <div className={style.block_buttons_left_block_buttons}>
+                                <button className={style.button} type={'button'} onClick={() => setRange('d1')}>
+                                    день
+                                </button>
+                                <button className={style.button} type={'button'} onClick={() => setRange('m1')}>
+                                    месяц
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <button className={style.button}>
+                                <NavLink to={SHOP_ROUTE} className={style.button_text_back}>
+                                    Вернуться на главную страницу
+                                </NavLink>
+                            </button>
+                        </div>
                     </div>
+                    <Chart id={id} range={range} />
                     <CoinWasAdded />
-                    <Chart id={id} />
                 </div>
             ) : null}
         </div>

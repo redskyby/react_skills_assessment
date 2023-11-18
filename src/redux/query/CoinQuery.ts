@@ -22,6 +22,16 @@ export interface CoinOne {
     data: CoinData;
 }
 
+export interface ChartOneCoin {
+    priceUsd: string;
+    time: number;
+    circulatingSupply: string;
+}
+
+export interface ArrayOfChartOneCoin {
+    data: ChartOneCoin[];
+}
+
 export const coinQueryApi = createApi({
     reducerPath: 'coinQueryApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://api.coincap.io/v2' }),
@@ -32,8 +42,8 @@ export const coinQueryApi = createApi({
         getOneCoin: build.query<CoinOne, string>({
             query: (name) => `/assets/${name}`,
         }),
-        getOneCoinHistory: build.query({
-            query: (name) => `/assets/${name}/history?interval=h1`,
+        getOneCoinHistory: build.query<ArrayOfChartOneCoin, { name: string; range: string }>({
+            query: (arg) => `/assets/${arg.name}/history?interval=${arg.range}`,
         }),
     }),
 });
