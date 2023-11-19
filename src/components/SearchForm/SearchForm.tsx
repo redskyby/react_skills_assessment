@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-// // import { Form, FormGroup, ListGroup } from 'react-bootstrap';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 // import { RootState } from '../../redux/Store';
-// // import { COIN_ROUTE } from '../../utils/RoutePath';
+import { COIN_ROUTE } from '../../utils/RoutePath';
 import style from './SearchForm.module.scss';
-// import searchIcon from '../../utils/imgIcon/searchIcon.svg';
 import favicon from '../../utils/imgIcon/searchIcon.svg';
+import { useGetOneCoinQuery } from '../../redux/query/CoinQuery';
 
 const SearchForm = () => {
-    // const history = useNavigate();
-    const [coin, setCoin] = useState('');
+    const history = useNavigate();
     // const coins = useSelector((state: RootState) => state.isCoinToolkit.coins);
+    const [coin, setCoin] = useState('');
+    const [info, setInfo] = useState(false);
+    const { data, isLoading, error } = useGetOneCoinQuery(coin);
 
     const [showBackground, setShowBackground] = useState(false);
 
@@ -24,6 +25,23 @@ const SearchForm = () => {
         setTimeout(() => {
             setCoin('');
         }, 200);
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (data !== undefined) {
+            setInfo(false);
+            history(COIN_ROUTE + `/${data?.data?.id}`);
+        }
+        handleFormBlur();
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.stopPropagation();
+        setCoin(e.target.value);
+        if (data !== undefined) {
+            setInfo(true);
+        }
     };
 
     // const filteredCoins = coin
@@ -65,7 +83,12 @@ const SearchForm = () => {
             {/*        ))}*/}
             {/*    </ListGroup>*/}
             {/*</Form>*/}
-            <form onFocus={handleFormFocus} onBlur={handleFormBlur} className={style.form}>
+            <form
+                onFocus={handleFormFocus}
+                onBlur={handleFormBlur}
+                className={style.form}
+                onSubmit={(e) => handleSubmit(e)}
+            >
                 <label htmlFor={'input_search'}>Поиск монеты по названию:</label>
                 <div className={style.form_input_button}>
                     <input
@@ -73,13 +96,14 @@ const SearchForm = () => {
                         type="text"
                         placeholder={'Введите название'}
                         value={coin}
-                        onChange={(e) => setCoin(e.target.value)}
+                        onChange={(e) => handleChange(e)}
                     />
                     <button className={style.button} type={'submit'}>
                         <img src={favicon} alt="favicon" />
                     </button>
                 </div>
             </form>
+            {info && <p>монета найдена</p>}
         </div>
     );
 };
