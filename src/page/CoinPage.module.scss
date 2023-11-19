@@ -79,9 +79,8 @@
     }
 }
 
-
-@media (max-width: $tablet-max){
-    .block_buttons{
+@media (max-width: $tablet-max) {
+    .block_buttons {
         flex-direction: column;
     }
 }
