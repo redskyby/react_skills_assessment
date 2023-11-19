@@ -12,7 +12,7 @@ const SearchForm = () => {
     // const coins = useSelector((state: RootState) => state.isCoinToolkit.coins);
     const [coin, setCoin] = useState('');
     const [info, setInfo] = useState(false);
-    const { data, isLoading, error } = useGetOneCoinQuery(coin);
+    const { data } = useGetOneCoinQuery(coin);
 
     const [showBackground, setShowBackground] = useState(false);
 
