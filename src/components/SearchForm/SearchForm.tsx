@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { RootState } from '../../redux/Store';
 import { COIN_ROUTE } from '../../utils/RoutePath';
 import style from './SearchForm.module.scss';
 import favicon from '../../utils/imgIcon/searchIcon.svg';
@@ -9,7 +7,6 @@ import { useGetOneCoinQuery } from '../../redux/query/CoinQuery';
 
 const SearchForm = () => {
     const history = useNavigate();
-    // const coins = useSelector((state: RootState) => state.isCoinToolkit.coins);
     const [coin, setCoin] = useState('');
     const [info, setInfo] = useState(false);
     const { data } = useGetOneCoinQuery(coin);
