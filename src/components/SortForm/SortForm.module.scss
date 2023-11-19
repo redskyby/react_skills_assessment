@@ -1,3 +1,5 @@
+@import '../../utils/Variables';
+
 .sort {
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -9,5 +11,11 @@
         border: none;
         width: 100%;
         background-color: #fff;
+    }
+}
+
+@media (max-width: $tablet-max) {
+    .sort {
+        margin: 0 auto;
     }
 }

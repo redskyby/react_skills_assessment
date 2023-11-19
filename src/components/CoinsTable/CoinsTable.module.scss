@@ -1,7 +1,7 @@
 @import '../../utils/Variables';
 
 .container {
-    max-width: $tablet-max;
+    max-width: $desktop-max;
     width: 100%;
     margin: 0 auto;
 }
@@ -37,5 +37,10 @@
             vertical-align: center;
             padding: 0.5rem 0.5rem;
         }
+    }
+}
+@media (max-width: $tablet-max) {
+    .main_page_table {
+        min-width: 780px;
     }
 }
