@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { COIN_ROUTE } from '../../../utils/RoutePath';
 import secondNumberAfterDot from '../../../utils/SecondNumberAfterDot';
 import icon from '../../../utils/imgIcon/favicon.png';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ADD_IN_ONE_SUIT } from '../../../redux/slice/SuitCaseSlice';
 import style from './CoinItem.module.scss';
 import { SET_SHOW } from '../../../redux/slice/CoinWasAddedSlice';
-import { RootState } from '../../../redux/Store';
 
 interface CoinData {
     id: string;
@@ -24,7 +23,6 @@ interface CoinData {
 }
 
 const CoinItem = ({ data }: { data: CoinData }) => {
-    const coins = useSelector((state: RootState) => state.isSuitCaseToolkit.coins);
     const history = useNavigate();
     const dispatch = useDispatch();
 
@@ -35,12 +33,8 @@ const CoinItem = ({ data }: { data: CoinData }) => {
 
     function addInSuitCase(e: React.MouseEvent, data: CoinData) {
         e.stopPropagation();
-        if (coins.includes(data)) {
-            console.log('такой есть');
-        } else {
-            dispatch(ADD_IN_ONE_SUIT(data));
-            dispatch(SET_SHOW(true));
-        }
+        dispatch(ADD_IN_ONE_SUIT(data));
+        dispatch(SET_SHOW(true));
     }
 
     return (

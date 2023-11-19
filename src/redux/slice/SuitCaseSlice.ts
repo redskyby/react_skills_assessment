@@ -12,7 +12,11 @@ const suitCaseSlice = createSlice({
     initialState,
     reducers: {
         ADD_IN_ONE_SUIT: (state, action: PayloadAction<CoinData>) => {
-            state.coins.push(action.payload);
+            if (state.coins.some((coin) => coin.id === action.payload.id)) {
+                state.twice = true;
+            } else {
+                state.coins.push(action.payload);
+            }
         },
         REMOVE_ONE_COIN_FROM_SUIT: (state, action: PayloadAction<CoinData>) => {
             state.coins = state.coins.filter((file) => file.id !== action.payload.id);
@@ -25,4 +29,4 @@ const suitCaseSlice = createSlice({
 
 export default suitCaseSlice.reducer;
 
-export const { ADD_IN_ONE_SUIT, REMOVE_ONE_COIN_FROM_SUIT } = suitCaseSlice.actions;
+export const { ADD_IN_ONE_SUIT, REMOVE_ONE_COIN_FROM_SUIT, HIDDEN_TWICE_COIN_MODAL } = suitCaseSlice.actions;
