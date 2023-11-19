@@ -12,7 +12,7 @@
     padding: 15px 0;
 }
 
-@media (max-width: $tablet-max) {
+@media (max-width: $tablet-max) and (min-width : $mobile-max + 1) {
     .navbar {
         width: 100%;
         flex-direction: row;

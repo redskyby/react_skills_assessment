@@ -78,3 +78,10 @@
         text-decoration: none;
     }
 }
+
+
+@media (max-width: $tablet-max){
+    .block_buttons{
+        flex-direction: column;
+    }
+}
