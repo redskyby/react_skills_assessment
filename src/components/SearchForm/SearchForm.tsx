@@ -100,7 +100,7 @@ const SearchForm = () => {
                     </button>
                 </div>
             </form>
-            {info && <p>монета найдена</p>}
+            {info && <p>монета найдена.</p>}
         </div>
     );
 };
